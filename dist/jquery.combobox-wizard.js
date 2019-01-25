@@ -20,8 +20,8 @@
             id: ''
         };
         // use for seleect update
-        this.target = null ;
-        this.text = null ;
+        this.target = null;
+        this.text = null;
 
         /**
          * initial element
@@ -29,7 +29,7 @@
          */
         this.init = function (self) {
 
-            lastx.title = settings.mainTitle ;
+            lastx.title = settings.mainTitle;
             // hide element
             $(self).hide();
             // set placehodler
@@ -41,7 +41,7 @@
             // init element for click for choose
             $(self).parent().append('<div class="wzcmb">' + placeholder + '</div>');
             // find select text position
-            $.wcb.text = $(self).parent().find('.wzcmb') ;
+            $.wcb.text = $(self).parent().find('.wzcmb');
             // initial idx for use in naviagion
             settings.datatree = $.wcb.makeId('1', settings.datatree);
             // on click combowizard
@@ -51,11 +51,21 @@
                     //if now list show list and countiniu
                     $(this).append('<ul id="wzcmb-list"></ul>');
                     // find target for last value
-                    $.wcb.target = $(this).parent().find('input') ;
+                    $.wcb.target = $(this).parent().find('input');
                     // show first list main cat in list
                     $.wcb.showTree(settings.datatree);
                     // slide down list
-                    $("#wzcmb-list").slideDown();
+                    $("#wzcmb-list").slideDown(function () {
+                        $(document).bind('click.handlewsc', function (e) {
+                            if (!$(event.target).is(".wzcmb-childer, .wzcmb-back")) {
+                                $.wcb.resetClose();
+                                $("#wzcmb-list").slideUp(200, function () {
+                                    $(this).remove();
+                                });
+                                $($.wcb.text).removeClass('active');
+                            }
+                        });
+                    });
                     // add active class for check  is open
                     $(this).addClass('active');
 
@@ -86,14 +96,14 @@
                     // show child items
                     $.wcb.showTree($.wcb.findTree(settings.datatree, $(this).data('id')));
                 } else if ($(this).hasClass('wzcmb-back')) { // if click on back
-                    if (navigatex[navigatex.length -1] != undefined){
+                    if (navigatex[navigatex.length - 1] != undefined) {
                         // roll back navigtaion to last
-                        lastx.title = navigatex[navigatex.length -1].title;
-                        lastx.id = navigatex[navigatex.length -1].id;
-                    } else{
+                        lastx.title = navigatex[navigatex.length - 1].title;
+                        lastx.id = navigatex[navigatex.length - 1].id;
+                    } else {
                         // check is navigation emoppty set def
-                        lastx.title = settings.mainTitle ;
-                        lastx.id = '' ;
+                        lastx.title = settings.mainTitle;
+                        lastx.id = '';
                     }
                     // pop last navigation item
                     navigatex.pop();
@@ -110,7 +120,7 @@
 
                 } else { // choose value
                     // set main input value
-                    $( $.wcb.target).val($(this).data('value'));
+                    $($.wcb.target).val($(this).data('value'));
                     // set choosed test
                     $($.wcb.text).text($(this).text());
                     // remove active class and hide list
@@ -172,7 +182,7 @@
                     var clsx = ' class="wzcmb-childer"';
                 }
                 // li to list
-                $("#wzcmb-list").append('<li' + clsx + ' data-id="' + item.idx + '"  data-value="'+item.value +'">' + item.title + '</li>');
+                $("#wzcmb-list").append('<li' + clsx + ' data-id="' + item.idx + '"  data-value="' + item.value + '">' + item.title + '</li>');
             }
         };
 
@@ -218,6 +228,9 @@
                 title: settings.mainTitle,
                 id: ''
             };
+
+            // reset docuemnt bind
+            $(document).unbind('click.handlewsc');
         };
 
         this.each(function () {
