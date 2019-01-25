@@ -9,13 +9,14 @@
 
 </head>
 <body>
-<div>
+<div style="width: 50%;margin: 50px auto;">
     <input type="text"  id="test"  placeholder="plz select"/>
 </div>
-
 <script>
     $(function () {
-      $("#test").wizcombobox();
+      $("#test").wizcombobox({
+          datatree:['1223','1233','3435']
+      });
     });
 </script>
 </body>
