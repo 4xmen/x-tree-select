@@ -29,7 +29,6 @@
          */
         this.init = function (self) {
 
-            console.log(settings.mainTitle );
             lastx.title = settings.mainTitle ;
             // hide element
             $(self).hide();
@@ -59,6 +58,7 @@
                     $("#wzcmb-list").slideDown();
                     // add active class for check  is open
                     $(this).addClass('active');
+
                 } else {
                     // if click not in main element
                     if (e.target !== this)
@@ -66,6 +66,7 @@
                     // hide and remove list
                     $(this).removeClass('active');
                     $("#wzcmb-list").slideUp(100, function () {
+                        $.wcb.resetClose();
                         $(this).remove();
                     })
                 }
@@ -114,6 +115,7 @@
                     $($.wcb.text).text($(this).text());
                     // remove active class and hide list
                     $($.wcb.text).removeClass('active');
+                    $.wcb.resetClose();
                     $("#wzcmb-list").slideUp(100, function () {
                         $(this).remove();
                     })
@@ -206,6 +208,17 @@
             return back;
         };
 
+        /**
+         * reset values on close
+         */
+        this.resetClose = function () {
+            // reset navagtion value
+            navigatex = [];
+            lastx = {
+                title: settings.mainTitle,
+                id: ''
+            };
+        };
 
         this.each(function () {
             $.wcb.init(this);
