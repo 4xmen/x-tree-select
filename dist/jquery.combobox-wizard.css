@@ -7,6 +7,10 @@
     position: relative;
 }
 
+.wzcmb-childer{
+
+}
+
 #wzcmb-list{
     border: gray 1px solid;
     width: 100%;
@@ -18,9 +22,24 @@
     left: -1px;
     background: white;
     border-radius: 0 0 6px 6px;
+    overflow: hidden;
 }
 
 #wzcmb-list li{
     padding: 4px;
     border-bottom: 1px solid rgba(33,33,33,0.2);
+    display: block;
+    text-align: left;
+    background: white;
+}
+
+
+
+#wzcmb-list li.wzcmb-childer{
+    background: white url("right.png") 98% no-repeat;
+    background-size: auto 50% ;
+}
+
+#wzcmb-list li:hover{
+    background-color: #eee ;
 }

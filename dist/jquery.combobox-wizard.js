@@ -21,16 +21,26 @@
             }
             $(self).parent().append('<div class="wzcmb">' + placeholder + '</div>');
 
-            $(self).parent().find('.wzcmb').bind('click.open',function () {
+            $(self).parent().find('.wzcmb').bind('click.open', function () {
                 console.log('x1');
-                if (!$(this).hasClass('active')){
-                    $(this).append('<ul id="wzcmb-list"><li>123</li><li>123</li></ul>');
+                if (!$(this).hasClass('active')) {
+                    $(this).append('<ul id="wzcmb-list"></ul>');
+                    for (const i in settings.datatree) {
+                        let item = settings.datatree[i];
+                        if (item.child.length == 0) {
+                            var clsx = '';
+                        } else {
+                            var clsx= ' class="wzcmb-childer"';
+                        }
+                        $("#wzcmb-list").append('<li' + clsx + '>' + item.title + '</li>')
+                    }
+
                     $("#wzcmb-list").slideDown();
                     $(this).addClass('active');
-                }else{
+                } else {
                     $(this).removeClass('active');
-                    $("#wzcmb-list").slideUp(100,function () {
-                      $(this).remove();
+                    $("#wzcmb-list").slideUp(100, function () {
+                        $(this).remove();
                     })
                 }
             });

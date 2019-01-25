@@ -10,13 +10,66 @@
 </head>
 <body>
 <div style="width: 50%;margin: 50px auto;">
-    <input type="text"  id="test"  placeholder="plz select"/>
+    <input type="text" id="test" placeholder="plz select"/>
 </div>
 <script>
     $(function () {
-      $("#test").wizcombobox({
-          datatree:['1223','1233','3435']
-      });
+        $("#test").wizcombobox({
+            datatree: [
+                {
+                    title: 'text1',
+                    value: 1,
+                    child: []
+                },
+                {
+                    title: 'text3',
+                    value: 3,
+                    child: [
+                        {
+                            title: 'text3',
+                            value: 3,
+                            child: []
+                        },
+                        {
+                            title: 'text4',
+                            value: 4,
+                            child: [
+                                {
+                                    title: 'text3',
+                                    value: 3,
+                                    child: []
+                                },
+                                {
+                                    title: 'text4',
+                                    value: 4,
+                                    child: []
+                                },
+                                {
+                                    title: 'text5',
+                                    value: 5,
+                                    child: []
+                                },
+                            ]
+                        },
+                        {
+                            title: 'text5',
+                            value: 5,
+                            child: []
+                        }
+                    ]
+                },
+                {
+                    title: 'text4',
+                    value: 4,
+                    child: []
+                },
+                {
+                    title: 'text5',
+                    value: 5,
+                    child: []
+                },
+            ]
+        });
     });
 </script>
 </body>
