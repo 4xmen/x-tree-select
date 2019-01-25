@@ -33,6 +33,10 @@
     background: white;
 }
 
+#wzcmb-list li:last-child{
+    border: none;
+}
+
 #wzcmb-list li.wzcmb-childer{
     background: white url("right.png") 98% no-repeat;
     background-size: auto 50% ;
@@ -40,4 +44,9 @@
 
 #wzcmb-list li:hover{
     background-color: #eee ;
+}
+#wzcmb-list li.wzcmb-back{
+    background: white url("left.png") 5px no-repeat;
+    padding-left: 20px;
+    background-size: auto 50% ;
 }
