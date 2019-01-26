@@ -1,0 +1,75 @@
+.wzcmb{
+    border: 1px solid silver;
+    padding: 5px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+#wzcmb-list{
+    border: gray 1px solid;
+    width: 100%;
+    padding: 0;
+    position: absolute;
+    display: none;
+    list-style: none;
+    top: 45%;
+    left: -1px;
+    background: white;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    z-index: 99;
+    overflow-x: hidden;
+}
+
+#wzcmb-list li{
+    padding: 4px;
+    border-bottom: 1px solid rgba(33,33,33,0.2);
+    display: block;
+    text-align: left;
+    background: white;
+    overflow: hidden;
+}
+
+#wzcmb-list li:nth-child(even){
+    background: #efefef;
+}
+
+#wzcmb-list li:last-child{
+    border: none;
+}
+
+#wzcmb-list li.wzcmb-childer{
+    background: white url("right.png") no-repeat;
+    background-position-x: calc(100% - 10px) ;
+    -ms-background-position-y: center;
+    background-position-y: center;
+    background-size: auto 50% ;
+}
+
+#wzcmb-list li:hover{
+    background-color: #dbedff ;
+}
+#wzcmb-list li.wzcmb-back{
+    background: white url("left.png") 5px no-repeat;
+    padding-left: 30px;
+    background-size: auto 50% ;
+}
+
+
+#wzcmb-list.out{
+    transform-origin: center right;
+    transform-style: preserve-3d;
+    transform: translateX(-100%) rotateY(-180deg) skew(0deg) ;
+}
+.anim{
+    -webkit-transition: all .6s linear;
+    -moz-transition: all .6s linear;
+    -o-transition: all .6s linear;
+    transition: all .6s linear;
+}
+
+/*.skew25y{*/
+   /**/
+/*}*/
