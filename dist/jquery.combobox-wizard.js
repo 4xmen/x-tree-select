@@ -95,7 +95,12 @@
                     lastx.title = $(this).text();
                     lastx.id = $(this).data('id');
                     // show child items
+                    $("#wzcmb-list").addClass('anim out');
                     $.wcb.showTree($.wcb.findTree(settings.datatree, $(this).data('id')));
+                    var ax = setTimeout(function () {
+                        $("#wzcmb-list").removeClass('anim out');
+                    }, 500);
+
                 } else if ($(this).hasClass('wzcmb-back')) { // if click on back
                     if (navigatex[navigatex.length - 1] != undefined) {
                         // roll back navigtaion to last
@@ -111,13 +116,16 @@
                     // get parent list
                     var lst = $.wcb.findTree(settings.datatree, $(this).data('id'));
                     // if has not parent show main cat
+                    $("#wzcmb-list").addClass('anim out');
                     if (lst.length == 0) {
                         $.wcb.showTree(settings.datatree);
                     } else {
                         // then show parent list
                         $.wcb.showTree(lst);
                     }
-
+                    var ax = setTimeout(function () {
+                        $("#wzcmb-list").removeClass('anim out');
+                    }, 500);
 
                 } else { // choose value
                     // set main input value
@@ -162,7 +170,8 @@
          * show list into selector
          * @param list
          */
-        this.showTree = function (list) {
+        this.showTree = function (list, cb) {
+            var content = '';
             // clear li list
             $("#wzcmb-list li").remove();
             // back button handle
@@ -170,7 +179,7 @@
             if (navigatex.length !== 0) {
                 // if navigation is empity not need back button
                 let back = navigatex[navigatex.length - 1];
-                $("#wzcmb-list").append('<li class="wzcmb-back" data-id="' + back.id + '"> &nbsp;' + back.title + '</li>')
+                content += '<li class="wzcmb-back" data-id="' + back.id + '"> &nbsp;' + back.title + '</li>';
             }
             // show list passed to function
             for (const ix in list) {
@@ -178,12 +187,17 @@
                 // ad childs
                 // check has child
                 if (item.child.length == 0) {
-                    var clsx = '';
+                    var clsx = ' class=""';
                 } else {
                     var clsx = ' class="wzcmb-childer"';
                 }
                 // li to list
-                $("#wzcmb-list").append('<li' + clsx + ' data-id="' + item.idx + '"  data-value="' + item.value + '">' + item.title + '</li>');
+                content += '<li' + clsx + ' data-id="' + item.idx + '"  data-value="' + item.value + '">' + item.title + '</li>';
+            }
+            console.log(content);
+            $("#wzcmb-list").html(content);
+            if (cb !== undefined) {
+                cb();
             }
         };
 
@@ -237,8 +251,6 @@
         this.each(function () {
             $.wcb.init(this);
         });
-
-
         return this;
 
     };
