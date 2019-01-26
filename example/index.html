@@ -16,6 +16,10 @@
 </div>
     <input type="submit" value="send"/>
 </form>
+<br>
+<div>
+    <input type="text" id="test2" placeholder="Pleasem choose an item"/>
+</div>
 <script>
     $(function () {
         $("#test").wizcombobox({
@@ -74,6 +78,67 @@
                 },
                 {
                     title: 'text5',
+                    value: 5,
+                    child: []
+                },
+            ]
+        });
+
+        $("#test2").wizcombobox({
+            datatree: [
+                {
+                    title: '*** text1',
+                    value: 1,
+                    child: []
+                },{
+                    title: '*** text2',
+                    value: 2,
+                    child: []
+                },
+                {
+                    title: '*** text3',
+                    value: 3,
+                    child: [
+                        {
+                            title: '*** lv2 text3',
+                            value: 3,
+                            child: []
+                        },
+                        {
+                            title: '*** lv2 text4',
+                            value: 4,
+                            child: [
+                                {
+                                    title: '*** lv3 text3',
+                                    value: 3,
+                                    child: []
+                                },
+                                {
+                                    title: '*** lv3 text4',
+                                    value: 4,
+                                    child: []
+                                },
+                                {
+                                    title: '*** lv3 text5',
+                                    value: 5,
+                                    child: []
+                                },
+                            ]
+                        },
+                        {
+                            title: '*** lv2 text5',
+                            value: 5,
+                            child: []
+                        }
+                    ]
+                },
+                {
+                    title: '*** text4',
+                    value: 4,
+                    child: []
+                },
+                {
+                    title: '*** text5',
                     value: 5,
                     child: []
                 },

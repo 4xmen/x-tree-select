@@ -34,7 +34,10 @@
 }
 
 #wzcmb-list li.wzcmb-childer{
-    background: white url("right.png") 98% no-repeat;
+    background: white url("right.png") no-repeat;
+    background-position-x: calc(100% - 10px) ;
+    -ms-background-position-y: center;
+    background-position-y: center;
     background-size: auto 50% ;
 }
 

@@ -40,18 +40,19 @@
             }
             // init element for click for choose
             $(self).parent().append('<div class="wzcmb">' + placeholder + '</div>');
-            // find select text position
-            $.wcb.text = $(self).parent().find('.wzcmb');
+
             // initial idx for use in naviagion
             settings.datatree = $.wcb.makeId('1', settings.datatree);
             // on click combowizard
             $(self).parent().find('.wzcmb').bind('click.open', function (e) {
                 // check is open list
                 if (!$(this).hasClass('active')) {
-                    //if now list show list and countiniu
-                    $(this).append('<ul id="wzcmb-list"></ul>');
                     // find target for last value
                     $.wcb.target = $(this).parent().find('input');
+                    // find select text position
+                    $.wcb.text = $(self).parent().find('.wzcmb');
+                    //if now list show list and countiniu
+                    $(this).append('<ul id="wzcmb-list"></ul>');
                     // show first list main cat in list
                     $.wcb.showTree(settings.datatree);
                     // slide down list
