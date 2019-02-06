@@ -2,6 +2,13 @@
     "use strict";
     $.fn.wizcombobox = function (options) {
 
+        // set default store for setting
+        if ($.wcbStore == undefined) {
+            $.scbCounter = -1;
+            $.wcbStore = [];
+            $.currentCounter = 0 ;
+        }
+
         // make app var for use in plugin
         $.wcb = this;
 
@@ -19,9 +26,16 @@
             title: settings.mainTitle,
             id: ''
         };
+
         // use for seleect update
         this.target = null;
         this.text = null;
+
+        // store setting for use
+        $.scbCounter++;
+        $.wcbStore[$.scbCounter] = settings;
+
+        // console.log($.wcbStore);
 
         /**
          * initial element
@@ -37,13 +51,18 @@
             if ($(self).attr('placeholder') != undefined) {
                 placeholder = $(self).attr('placeholder');
             }
+
             // init element for click for choose
-            $(self).parent().append('<div class="wzcmb">' + placeholder + '</div>');
+            $(self).parent().append('<div class="wzcmb" data-wcounter="' +
+                $.scbCounter + '" >' + placeholder + '</div>');
 
             // initial idx for use in naviagion
             settings.datatree = $.wcb.makeId('1', settings.datatree);
             // on click combowizard
             $(self).parent().find('.wzcmb').bind('click.open', function (e) {
+
+
+                $.currentCounter = $(this).data('wcounter');
                 // check is open list
                 if (!$(this).hasClass('active')) {
                     // find target for last value
@@ -53,7 +72,8 @@
                     //if now list show list and countiniu
                     $(this).append('<ul id="wzcmb-list"></ul>');
                     // show first list main cat in list
-                    $.wcb.showTree(settings.datatree);
+
+                    $.wcb.showTree($.wcbStore[$.currentCounter].datatree);
                     // slide down list
                     $("#wzcmb-list").slideDown(function () {
                         $(document).bind('click.handlewsc', function (e) {
@@ -90,7 +110,6 @@
             $(document).on('click', '#wzcmb-list li', function () {
                 // hast child
                 if ($(this).hasClass('wzcmb-childer')) {
-                    console.log('xy');
                     // make navigation
                     let tmp = {
                         title: lastx.title,
@@ -101,7 +120,7 @@
                     lastx.id = $(this).data('id');
                     // show child items
                     $("#wzcmb-list").addClass('anim out');
-                    $.wcb.showTree($.wcb.findTree(settings.datatree, $(this).data('id')));
+                    $.wcb.showTree($.wcb.findTree($.wcbStore[$.currentCounter].datatree, $(this).data('id')));
                     var ax = setTimeout(function () {
                         $("#wzcmb-list").removeClass('anim out');
                     }, 500);
@@ -113,17 +132,17 @@
                         lastx.id = navigatex[navigatex.length - 1].id;
                     } else {
                         // check is navigation emoppty set def
-                        lastx.title = settings.mainTitle;
+                        lastx.title = $.wcbStore[$.currentCounter].mainTitle;
                         lastx.id = '';
                     }
                     // pop last navigation item
                     navigatex.pop();
                     // get parent list
-                    var lst = $.wcb.findTree(settings.datatree, $(this).data('id'));
+                    var lst = $.wcb.findTree($.wcbStore[$.currentCounter].datatree, $(this).data('id'));
                     // if has not parent show main cat
                     $("#wzcmb-list").addClass('anim out');
                     if (lst.length == 0) {
-                        $.wcb.showTree(settings.datatree);
+                        $.wcb.showTree($.wcbStore[$.currentCounter].datatree);
                     } else {
                         // then show parent list
                         $.wcb.showTree(lst);
@@ -212,7 +231,6 @@
          * @returns {*}
          */
         this.findTree = function (list, idx) {
-            console.log(list);
             // make return by def
             var back = [];
             // each first level of list
@@ -245,14 +263,14 @@
             // reset navagtion value
             navigatex = [];
             lastx = {
-                title: settings.mainTitle,
+                title: $.wcbStore[$.currentCounter].mainTitle,
                 id: ''
             };
 
             // reset docuemnt bind
             $(document).unbind('click.handlewsc');
         };
-        this.setValue = function(newValue) {
+        this.setValue = function (newValue) {
             var currentInnerText = this.html();
             this.html(currentInnerText + " " + newValue)
         };
