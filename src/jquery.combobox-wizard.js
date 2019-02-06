@@ -23,7 +23,7 @@
 
         // store last navigtion fot buffer use
          $.lastx = {
-            // title: '',
+            title: '',
             id: ''
         };
 
