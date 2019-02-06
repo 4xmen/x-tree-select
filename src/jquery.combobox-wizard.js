@@ -19,11 +19,11 @@
         }, options);
 
         // store navigation for trace where are we?
-        var navigatex = [];
+       $.navigatex = [];
 
         // store last navigtion fot buffer use
-        var lastx = {
-            title: settings.mainTitle,
+         $.lastx = {
+            // title: '',
             id: ''
         };
 
@@ -42,7 +42,7 @@
          * @param self
          */
         this.init = function (self) {
-            lastx.title = settings.mainTitle;
+            $.lastx.title = settings.mainTitle;
             // hide element
             $(self).hide();
             // set placehodler
@@ -60,9 +60,12 @@
             settings.datatree = $.wcb.makeId('1', settings.datatree);
             // on click combowizard
             $(self).parent().find('.wzcmb').bind('click.open', function (e) {
-
-
+                if (e.target !== this) {
+                    return;
+                }
                 $.currentCounter = $(this).data('wcounter');
+                $.lastx.title = $.wcbStore[$.currentCounter].mainTitle ;
+                console.log($.lastx.title);
                 // check is open list
                 if (!$(this).hasClass('active')) {
                     // find target for last value
@@ -112,12 +115,12 @@
                 if ($(this).hasClass('wzcmb-childer')) {
                     // make navigation
                     let tmp = {
-                        title: lastx.title,
-                        id: lastx.id
+                        title: $.lastx.title,
+                        id: $.lastx.id
                     };
-                    navigatex.push(tmp);
-                    lastx.title = $(this).text();
-                    lastx.id = $(this).data('id');
+                    $.navigatex.push(tmp);
+                    $.lastx.title = $(this).text();
+                    $.lastx.id = $(this).data('id');
                     // show child items
                     $("#wzcmb-list").addClass('anim out');
                     $.wcb.showTree($.wcb.findTree($.wcbStore[$.currentCounter].datatree, $(this).data('id')));
@@ -126,17 +129,17 @@
                     }, 500);
 
                 } else if ($(this).hasClass('wzcmb-back')) { // if click on back
-                    if (navigatex[navigatex.length - 1] != undefined) {
+                    if ($.navigatex[$.navigatex.length - 1] != undefined) {
                         // roll back navigtaion to last
-                        lastx.title = navigatex[navigatex.length - 1].title;
-                        lastx.id = navigatex[navigatex.length - 1].id;
+                        $.lastx.title = $.navigatex[$.navigatex.length - 1].title;
+                        $.lastx.id = $.navigatex[$.navigatex.length - 1].id;
                     } else {
                         // check is navigation emoppty set def
-                        lastx.title = $.wcbStore[$.currentCounter].mainTitle;
-                        lastx.id = '';
+                        $.lastx.title = $.wcbStore[$.currentCounter].mainTitle;
+                        $.lastx.id = '';
                     }
                     // pop last navigation item
-                    navigatex.pop();
+                    $.navigatex.pop();
                     // get parent list
                     var lst = $.wcb.findTree($.wcbStore[$.currentCounter].datatree, $(this).data('id'));
                     // if has not parent show main cat
@@ -200,9 +203,9 @@
             $("#wzcmb-list li").remove();
             // back button handle
             // has parent need back button
-            if (navigatex.length !== 0) {
+            if ($.navigatex.length !== 0) {
                 // if navigation is empity not need back button
-                let back = navigatex[navigatex.length - 1];
+                let back = $.navigatex[$.navigatex.length - 1];
                 content += '<li class="wzcmb-back" data-id="' + back.id + '"> &nbsp;' + back.title + '</li>';
             }
             // show list passed to function
@@ -261,8 +264,8 @@
          */
         this.resetClose = function () {
             // reset navagtion value
-            navigatex = [];
-            lastx = {
+            $.navigatex = [];
+            $.lastx = {
                 title: $.wcbStore[$.currentCounter].mainTitle,
                 id: ''
             };

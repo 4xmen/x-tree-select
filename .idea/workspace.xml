@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fcd02ce4-2607-40f2-8d4b-28093ec96edc" name="Default Changelist" comment="">
+    <list default="true" id="fcd02ce4-2607-40f2-8d4b-28093ec96edc" name="Default Changelist" comment="fix multipe useage plugin bug for data tree">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/example/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jquery.combobox-wizard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/jquery.combobox-wizard.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,16 +42,26 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="11" />
-          <entry key="js" value="399" />
+          <entry key="html" value="15" />
+          <entry key="js" value="628" />
           <entry key="txt" value="65" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="11" />
-          <entry key="JavaScript" value="399" />
+          <entry key="HTML" value="15" />
+          <entry key="JavaScript" value="628" />
           <entry key="PLAIN_TEXT" value="65" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="js" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JavaScript" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -60,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="87" column="23" lean-forward="true" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
+            <state relative-caret-position="132">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -69,8 +80,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/jquery.combobox-wizard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            <state relative-caret-position="233">
+              <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
               <folding>
                 <element signature="e#35#41#0" expanded="true" />
               </folding>
@@ -83,9 +94,26 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>datatree</find>
-      <find>mainTitle</find>
       <find>title</find>
+      <find>w</find>
+      <find>wcou</find>
+      <find>mainti</find>
+      <find>current</find>
+      <find>currentc</find>
+      <find>nav</find>
+      <find>main</find>
+      <find>maint</find>
+      <find>curre</find>
+      <find>mainTitle</find>
+      <find>.opem</find>
+      <find>.open</find>
+      <find>lastx</find>
+      <find>navigatex</find>
     </findStrings>
+    <replaceStrings>
+      <replace>$.lastx</replace>
+      <replace>$.navigatex</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -177,7 +205,7 @@
       <option name="presentableId" value="Default" />
       <updated>1548539236399</updated>
       <workItem from="1548539237802" duration="656000" />
-      <workItem from="1549429388968" duration="3422000" />
+      <workItem from="1549429388968" duration="7619000" />
     </task>
     <task id="LOCAL-00001" summary="fix multipe useage plugin bug for data tree">
       <created>1549432810529</created>
@@ -186,11 +214,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549432810529</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix multipe useage plugin bug for data tree">
+      <created>1549432832623</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1549432832623</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4078000" />
+    <option name="totallyTimeSpent" value="8275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1382" height="744" extended-state="6" />
@@ -230,15 +265,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/example/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="87" column="23" lean-forward="true" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
+        <state relative-caret-position="132">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jquery.combobox-wizard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="233">
+          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
           <folding>
             <element signature="e#35#41#0" expanded="true" />
           </folding>
