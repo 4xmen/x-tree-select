@@ -73,6 +73,7 @@
                 // check is open list
                 if (!$(this).hasClass('active')) {
 
+                    $.wcbStore[$.currentCounter].onOpen();
                     // find target for last value
                     $.wcb.target = $(this).parent().find('input');
                     // find select text position
