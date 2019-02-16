@@ -15,6 +15,10 @@
         // change plugin info
         var settings = $.extend({
             datatree: [],
+            onOpen:function () {},
+            OnSelect:function (selected) {},
+            OnChange:function (oldVal,newVal) {},
+            onClose:function () {},
             mainTitle: 'Main category'
         }, options);
 
@@ -63,11 +67,12 @@
                 if (e.target !== this) {
                     return;
                 }
+
                 $.currentCounter = $(this).data('wcounter');
                 $.lastx.title = $.wcbStore[$.currentCounter].mainTitle ;
-                console.log($.lastx.title);
                 // check is open list
                 if (!$(this).hasClass('active')) {
+
                     // find target for last value
                     $.wcb.target = $(this).parent().find('input');
                     // find select text position
@@ -101,7 +106,7 @@
                     // hide and remove list
                     $(this).removeClass('active');
                     $("#wzcmb-list").slideUp(100, function () {
-                        $.wcb.resetClose();
+                        // $.wcb.resetClose();
                         $(this).remove();
                     })
                 }
@@ -161,7 +166,6 @@
                     $($.wcb.text).text($(this).text());
                     // remove active class and hide list
                     $($.wcb.text).removeClass('active');
-                    $.wcb.resetClose();
                     $("#wzcmb-list").slideUp(100, function () {
                         $(this).remove();
                     })
@@ -263,6 +267,7 @@
          * reset values on close
          */
         this.resetClose = function () {
+            $.wcbStore[$.currentCounter].onClose();
             // reset navagtion value
             $.navigatex = [];
             $.lastx = {

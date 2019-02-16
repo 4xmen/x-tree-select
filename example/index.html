@@ -85,6 +85,11 @@
 
         $("#test2").wizcombobox({
             mainTitle: 'mCa00000t',
+            onOpen: function () {
+                // console.log('onOpen event triggered');
+            },onClose: function () {
+                console.log('onClose event triggered');
+            },
             datatree: [
                 {
                     title: '*** text1',
