@@ -160,13 +160,17 @@
                         $("#wzcmb-list").removeClass('anim out');
                     }, 500);
 
-                } else { // choose value
+                } else { // choose|select value
                     // set main input value
                     $($.wcb.target).val($(this).data('value'));
                     // set choosed test
                     $($.wcb.text).text($(this).text());
                     // remove active class and hide list
                     $($.wcb.text).removeClass('active');
+                    $.wcbStore[$.currentCounter].OnSelect({
+                        value: $(this).data('value'),
+                        text: $(this).text()
+                    });
                     $("#wzcmb-list").slideUp(100, function () {
                         $(this).remove();
                     })
