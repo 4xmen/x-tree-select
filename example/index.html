@@ -90,8 +90,10 @@
             }, onClose: function () {
                 // console.log('onClose event triggered');
             }, OnSelect: function (sel) {
-                console.log('onSelect event triggered secleted : ');
-                console.log(sel);
+                // console.log('onSelect event triggered secleted : ');
+                // console.log(sel);
+            }, OnChange: function (oldv,newv) {
+                console.log('OnChange event triggered old: ',oldv,'new:',newv);
             },
             datatree: [
                 {

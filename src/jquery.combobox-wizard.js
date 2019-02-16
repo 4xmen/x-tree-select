@@ -161,12 +161,25 @@
                     }, 500);
 
                 } else { // choose|select value
+                    // OnChange event
+                    $.wcbStore[$.currentCounter].OnChange({
+                        value: $($.wcb.target).val(),
+                        text: $($.wcb.text).clone()    //clone the element
+                            .children() //select all the children
+                            .remove()   //remove all the children
+                            .end()  //again go back to selected element
+                            .text()
+                    },{
+                        value: $(this).data('value'),
+                        text: $(this).text()
+                    });
                     // set main input value
                     $($.wcb.target).val($(this).data('value'));
                     // set choosed test
                     $($.wcb.text).text($(this).text());
                     // remove active class and hide list
                     $($.wcb.text).removeClass('active');
+                    // OnChange
                     $.wcbStore[$.currentCounter].OnSelect({
                         value: $(this).data('value'),
                         text: $(this).text()
