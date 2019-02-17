@@ -70,7 +70,20 @@
     transition: all .6s linear;
 }
 
+/** rtl support css */
+.wcb-rtl{
+}
 
-/*.skew25y{*/
-   /**/
-/*}*/
+.wcb-rtl li {
+    direction: rtl !important;
+    text-align: right !important;
+}
+.wcb-rtl li.wzcmb-childer {
+    background-image: url("left.png") !important;
+    background-position-x: 10px !important;
+}
+.wcb-rtl li.wzcmb-back {
+    background-image:  url("right.png") !important ;
+    background-position-x: calc(100% - 10px) !important;
+    padding-right: 30px !important;
+}

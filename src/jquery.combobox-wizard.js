@@ -64,7 +64,7 @@
 
             // set rtl class if is rtl
             if ($.wcbStore[$.scbCounter].direction == 'rtl'){
-                var rtlClass = 'wsc-rtl' ;
+                var rtlClass = 'wcb-rtl' ;
             } else{
                 var rtlClass = '';
             }
