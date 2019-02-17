@@ -19,7 +19,12 @@
             OnSelect:function (selected) {},
             OnChange:function (oldVal,newVal) {},
             onClose:function () {},
-            mainTitle: 'Main category'
+            mainTitle: 'Main category',
+            json:{
+                title: 'title',
+                value: 'value',
+                child: 'child'
+            }
         }, options);
 
         // store navigation for trace where are we?
@@ -206,9 +211,9 @@
                 let prefix = base + '-' + (parseInt(ix) + 1);
                 itm.idx = prefix;
                 // if has child
-                if (itm.child.length != 0) {
+                if (itm[$.wcbStore[$.scbCounter].json.child].length != 0) {
                     // recall this function for children
-                    itm.child = $.wcb.makeId(prefix, itm.child);
+                    itm[$.wcbStore[$.scbCounter].json.child] = $.wcb.makeId(prefix, itm[$.wcbStore[$.scbCounter].json.child]);
                 }
                 all.push(itm);
             }
@@ -235,13 +240,13 @@
                 let item = list[ix];
                 // ad childs
                 // check has child
-                if (item.child.length == 0) {
+                if (item[$.wcbStore[$.currentCounter].json.child].length == 0) {
                     var clsx = ' class=""';
                 } else {
                     var clsx = ' class="wzcmb-childer"';
                 }
                 // li to list
-                content += '<li' + clsx + ' data-id="' + item.idx + '"  data-value="' + item.value + '">' + item.title + '</li>';
+                content += '<li' + clsx + ' data-id="' + item.idx + '"  data-value="' + item[$.wcbStore[$.currentCounter].json.value] + '">' + item[$.wcbStore[$.currentCounter].json.title] + '</li>';
             }
             $("#wzcmb-list").html(content);
             if (cb !== undefined) {
@@ -262,14 +267,14 @@
             for (const ix in list) {
                 let item = list[ix];
                 if (item.idx == idx) {
-                    return item.child;
+                    return item[$.wcbStore[$.currentCounter].json.child];
                 }
             }
             // if not fond in first level each the childs
             for (const ix in list) {
                 let item = list[ix];
-                if (item.child.length !== 0) {
-                    var tmp = $.wcb.findTree(item.child, idx);
+                if (item[$.wcbStore[$.currentCounter].json.child].length !== 0) {
+                    var tmp = $.wcb.findTree(item[$.wcbStore[$.currentCounter].json.child], idx);
                     // if found idx retrur
                     if (tmp.length !== 0) {
                         return tmp;

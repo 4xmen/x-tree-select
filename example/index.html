@@ -95,62 +95,67 @@
             }, OnChange: function (oldv,newv) {
                 console.log('OnChange event triggered old: ',oldv,'new:',newv);
             },
+            json: {
+                title: 't',
+                value: 'v',
+                child: 'c'
+            },
             datatree: [
                 {
-                    title: '*** text1',
-                    value: 1,
-                    child: []
+                    t: '*** text1',
+                    v: 1,
+                    c: []
                 }, {
-                    title: '*** text2',
-                    value: 2,
-                    child: []
+                    t: '*** text2',
+                    v: 2,
+                    c: []
                 },
                 {
-                    title: '*** text3',
-                    value: 3,
-                    child: [
+                    t: '*** text3',
+                    v: 3,
+                    c: [
                         {
-                            title: '*** lv2 text3',
-                            value: 3,
-                            child: []
+                            t: '*** lv2 text3',
+                            v: 3,
+                            c: []
                         },
                         {
-                            title: '*** lv2 text4',
-                            value: 4,
-                            child: [
+                            t: '*** lv2 text4',
+                            v: 4,
+                            c: [
                                 {
-                                    title: '*** lv3 text3',
-                                    value: 3,
-                                    child: []
+                                    t: '*** lv3 text3',
+                                    v: 3,
+                                    c: []
                                 },
                                 {
-                                    title: '*** lv3 text4',
-                                    value: 4,
-                                    child: []
+                                    t: '*** lv3 text4',
+                                    v: 4,
+                                    c: []
                                 },
                                 {
-                                    title: '*** lv3 text5',
-                                    value: 5,
-                                    child: []
+                                    t: '*** lv3 text5',
+                                    v: 5,
+                                    c: []
                                 },
                             ]
                         },
                         {
-                            title: '*** lv2 text5',
-                            value: 5,
-                            child: []
+                            t: '*** lv2 text5',
+                            v: 5,
+                            c: []
                         }
                     ]
                 },
                 {
-                    title: '*** text4',
-                    value: 4,
-                    child: []
+                    t: '*** text4',
+                    v: 4,
+                    c: []
                 },
                 {
-                    title: '*** text5',
-                    value: 5,
-                    child: []
+                    t: '*** text5',
+                    v: 5,
+                    c: []
                 },
             ]
         });
