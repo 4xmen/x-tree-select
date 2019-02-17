@@ -1,0 +1,29 @@
+{
+  "name": "tree-select",
+  "license": "MIT",
+  "authors": [
+    "JD-R2 <jon_eldiablo@hotmail.com>"
+  ],
+  "description": "A jump-start for jQuery plugins development.",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "boilerplate",
+    "jquery-plugin",
+    "jquery-boilerplate"
+  ],
+  "main": "src/tree-select.js",
+  "dependencies": {
+    "jquery": "2.2.4"
+  },
+  "ignore": [
+    "npm-debug.log",
+    "bower_components",
+    "node_modules",
+    "src",
+    "demo",
+    "test",
+    "/**.*",
+    "/*.md"
+  ]
+}
