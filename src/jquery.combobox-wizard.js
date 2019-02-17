@@ -15,6 +15,7 @@
         // change plugin info
         var settings = $.extend({
             datatree: [],
+            direction: 'ltr',
             onOpen:function () {},
             OnSelect:function (selected) {},
             OnChange:function (oldVal,newVal) {},
@@ -61,8 +62,15 @@
                 placeholder = $(self).attr('placeholder');
             }
 
+            // set rtl class if is rtl
+            if ($.wcbStore[$.scbCounter].direction == 'rtl'){
+                var rtlClass = 'wsc-rtl' ;
+            } else{
+                var rtlClass = '';
+            }
+
             // init element for click for choose
-            $(self).parent().append('<div class="wzcmb" data-wcounter="' +
+            $(self).parent().append('<div class="wzcmb ' + rtlClass + '" data-wcounter="' +
                 $.scbCounter + '" >' + placeholder + '</div>');
 
             // initial idx for use in naviagion

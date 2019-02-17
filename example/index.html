@@ -23,16 +23,15 @@
     $(function () {
         $("#test").wizcombobox({
             mainTitle: 'x main cat',
-            datatree: [
-                {
-                    title: 'text1',
-                    value: 1,
-                    child: []
-                }, {
-                    title: 'text2',
-                    value: 2,
-                    child: []
-                },
+            datatree: [{
+                title: 'text1',
+                value: 1,
+                child: []
+            }, {
+                title: 'text2',
+                value: 2,
+                child: []
+            },
                 {
                     title: 'text3',
                     value: 3,
@@ -85,6 +84,7 @@
 
         $("#test2").wizcombobox({
             mainTitle: 'mCa00000t',
+            direction: 'rtl',
             onOpen: function () {
                 console.log('onOpen event triggered');
             }, onClose: function () {
@@ -92,24 +92,23 @@
             }, OnSelect: function (sel) {
                 console.log('onSelect event triggered secleted : ');
                 console.log(sel);
-            }, OnChange: function (oldv,newv) {
-                console.log('OnChange event triggered old: ',oldv,'new:',newv);
+            }, OnChange: function (oldv, newv) {
+                console.log('OnChange event triggered old: ', oldv, 'new:', newv);
             },
             json: {
                 title: 't',
                 value: 'v',
                 child: 'c'
             },
-            datatree: [
-                {
-                    t: '*** text1',
-                    v: 1,
-                    c: []
-                }, {
-                    t: '*** text2',
-                    v: 2,
-                    c: []
-                },
+            datatree: [{
+                t: '*** text1',
+                v: 1,
+                c: []
+            }, {
+                t: '*** text2',
+                v: 2,
+                c: []
+            },
                 {
                     t: '*** text3',
                     v: 3,
