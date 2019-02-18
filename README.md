@@ -121,7 +121,7 @@ The event you can use for tree select
 - Blackberry Browser <= 10
 - ![ios safari](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/safari-ios_1-6/safari-ios_1-6_16x16.png) iOS Safari <= 7
 
-##Support
+## Support
 If you found a bug or have a feature suggestion, please submit it in the Issues tracker.
 
 ## Demo
