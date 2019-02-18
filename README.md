@@ -111,15 +111,15 @@ The event you can use for tree select
 ```  
           
 ## Browser compatibility
-- ![ie](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/internet-explorer_9-11/internet-explorer_9-11_16x16.png) IE <= 9
+- ![ie](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/internet-explorer_9-11/internet-explorer_9-11_16x16.png) IE >= 9
 - ![edge](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/edge/edge_16x16.png) Edge all version
-- ![firefox](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/firefox/firefox_16x16.png) Firefox <= 16
-- ![safari](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/safari_1-7/safari_1-7_16x16.png) Safari <=11
-- ![chrom](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/chrome/chrome_16x16.png)/![chromium](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/chromium/chromium_16x16.png) chrome / chromium <= 26 
-- ![opera](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/opera/opera_16x16.png) Opera <=15
-- ![android](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/android/android_16x16.png) Android browser <= 4.4
-- Blackberry Browser <=  10
-- ![ios safari](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/safari-ios_1-6/safari-ios_1-6_16x16.png) iOS Safari <= 7
+- ![firefox](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/firefox/firefox_16x16.png) Firefox >= 16
+- ![safari](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/safari_1-7/safari_1-7_16x16.png) Safari >=11
+- ![chrom](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/chrome/chrome_16x16.png)/![chromium](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/chromium/chromium_16x16.png) chrome / chromium >= 26 
+- ![opera](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/opera/opera_16x16.png) Opera >=15
+- ![android](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/android/android_16x16.png) Android browser >= 4.4
+- Blackberry Browser >=  10
+- ![ios safari](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/safari-ios_1-6/safari-ios_1-6_16x16.png) iOS Safari >= 7
 
 ## Support
 If you found a bug or have a feature suggestion, please submit it in the Issues tracker.
