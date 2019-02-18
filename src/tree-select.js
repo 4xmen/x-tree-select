@@ -97,9 +97,14 @@
                     $.trs.text = $(self).parent().find('.trsel');
                     //if now list show list and countiniu
                     $(this).append('<ul id="trsel-list"></ul>');
-                    // show first list main cat in list
-
-                    $.trs.showTree($.trsStore[$.currentCounter].datatree);
+                    if ($.trsStore[$.currentCounter].navx == undefined){
+                        // show first list main cat in list
+                        $.trs.showTree($.trsStore[$.currentCounter].datatree);
+                    } else {
+                        $.lastx = $.trsStore[$.currentCounter].lastx;
+                        $.navigatex = $.trsStore[$.currentCounter].navx;
+                        $.trs.showTree($.trs.findTree($.trsStore[$.currentCounter].datatree, $.trsStore[$.currentCounter].lastx.id));
+                    }
                     // slide down list
                     $("#trsel-list").slideDown(function () {
                         $(document).bind('click.handletrsl', function (e) {
@@ -121,6 +126,7 @@
                     // if click not in main element
                     if (e.target !== this)
                         return;
+
                     // hide and remove list
                     $(this).removeClass('active');
                     $("#trsel-list").slideUp(100, function () {
@@ -194,6 +200,14 @@
                     $($.trs.target).val($(this).data('value'));
                     // set choosed test
                     $($.trs.text).text($(this).text());
+                    // if selected is not first level store level & last titles
+                    if ($.navigatex.length > 0) {
+                        $.trsStore[$.currentCounter].navx = $.navigatex ;
+                        $.trsStore[$.currentCounter].lastx = $.lastx ;
+                    }else{
+                        delete $.trsStore[$.currentCounter].navx ;
+                        delete $.trsStore[$.currentCounter].lastx ;
+                    }
                     // remove active class and hide list
                     $($.trs.text).removeClass('active');
                     // OnChange
