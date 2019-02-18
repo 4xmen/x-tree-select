@@ -118,7 +118,7 @@ The event you can use for tree select
 - ![chrom](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/chrome/chrome_16x16.png)/![chromium](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/chromium/chromium_16x16.png) chrome / chromium <= 26 
 - ![opera](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/opera/opera_16x16.png) Opera <=15
 - ![android](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/android/android_16x16.png) Android browser <= 4.4
-- Blackberry Browser <= 10
+- Blackberry Browser <=  10
 - ![ios safari](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/46.1.0/archive/safari-ios_1-6/safari-ios_1-6_16x16.png) iOS Safari <= 7
 
 ## Support
