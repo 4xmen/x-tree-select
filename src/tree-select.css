@@ -1,4 +1,4 @@
-.wzcmb{
+.trsel{
     border: 1px solid silver;
     padding: 5px;
     text-align: center;
@@ -7,7 +7,7 @@
     position: relative;
 }
 
-#wzcmb-list{
+#trsel-list{
     border: gray 1px solid;
     width: 100%;
     padding: 0;
@@ -23,7 +23,7 @@
     overflow-x: hidden;
 }
 
-#wzcmb-list li{
+#trsel-list li{
     padding: 4px;
     border-bottom: 1px solid rgba(33,33,33,0.2);
     display: block;
@@ -32,15 +32,15 @@
     overflow: hidden;
 }
 
-#wzcmb-list li:nth-child(even){
+#trsel-list li:nth-child(even){
     background: #efefef;
 }
 
-#wzcmb-list li:last-child{
+#trsel-list li:last-child{
     border: none;
 }
 
-#wzcmb-list li.wzcmb-childer{
+#trsel-list li.trsel-childer{
     background: white url("right.png") no-repeat;
     background-position-x: calc(100% - 10px) ;
     -ms-background-position-y: center;
@@ -48,17 +48,17 @@
     background-size: auto 50% ;
 }
 
-#wzcmb-list li:hover{
+#trsel-list li:hover{
     background-color: #dbedff ;
 }
-#wzcmb-list li.wzcmb-back{
+#trsel-list li.trsel-back{
     background: white url("left.png") 5px no-repeat;
     padding-left: 30px;
     background-size: auto 50% ;
 }
 
 
-#wzcmb-list.out{
+#trsel-list.out{
     transform-origin: center right;
     transform-style: preserve-3d;
     transform: translateX(-100%) rotateY(-180deg) skew(0deg) ;
@@ -71,18 +71,18 @@
 }
 
 /** rtl support css */
-.wcb-rtl{
+.trs-rtl{
 }
 
-.wcb-rtl li {
+.trs-rtl li {
     direction: rtl !important;
     text-align: right !important;
 }
-.wcb-rtl li.wzcmb-childer {
+.trs-rtl li.trsel-childer {
     background-image: url("left.png") !important;
     background-position-x: 10px !important;
 }
-.wcb-rtl li.wzcmb-back {
+.trs-rtl li.trsel-back {
     background-image:  url("right.png") !important ;
     background-position-x: calc(100% - 10px) !important;
     padding-right: 30px !important;

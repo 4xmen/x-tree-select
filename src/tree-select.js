@@ -3,14 +3,14 @@
     $.fn.treeSelect = function (options) {
 
         // set default store for setting
-        if ($.wcbStore == undefined) {
+        if ($.trsStore == undefined) {
             $.scbCounter = -1;
-            $.wcbStore = [];
+            $.trsStore = [];
             $.currentCounter = 0;
         }
 
         // make app var for use in plugin
-        $.wcb = this;
+        $.trs = this;
 
         // change plugin info
         var settings = $.extend({
@@ -47,9 +47,9 @@
 
         // store setting for use
         $.scbCounter++;
-        $.wcbStore[$.scbCounter] = settings;
+        $.trsStore[$.scbCounter] = settings;
 
-        // console.log($.wcbStore);
+        // console.log($.trsStore);
 
         /**
          * initial element
@@ -67,48 +67,48 @@
             }
 
             // set rtl class if is rtl
-            if ($.wcbStore[$.scbCounter].direction == 'rtl') {
-                var rtlClass = 'wcb-rtl';
+            if ($.trsStore[$.scbCounter].direction == 'rtl') {
+                var rtlClass = 'trs-rtl';
             } else {
                 var rtlClass = '';
             }
 
             // init element for click for choose
-            $(self).parent().append('<div class="wzcmb ' + rtlClass + '" data-wcounter="' +
+            $(self).parent().append('<div class="trsel ' + rtlClass + '" data-trcounter="' +
                 $.scbCounter + '" >' + placeholder + '</div>');
 
             // initial idx for use in naviagion
-            settings.datatree = $.wcb.makeId('1', settings.datatree);
+            settings.datatree = $.trs.makeId('1', settings.datatree);
             // on click combowizard
-            $(self).parent().find('.wzcmb').bind('click.open', function (e) {
+            $(self).parent().find('.trsel').bind('click.open', function (e) {
                 if (e.target !== this) {
                     return;
                 }
 
-                $.currentCounter = $(this).data('wcounter');
-                $.lastx.title = $.wcbStore[$.currentCounter].mainTitle;
+                $.currentCounter = $(this).data('trcounter');
+                $.lastx.title = $.trsStore[$.currentCounter].mainTitle;
                 // check is open list
                 if (!$(this).hasClass('active')) {
 
-                    $.wcbStore[$.currentCounter].onOpen();
+                    $.trsStore[$.currentCounter].onOpen();
                     // find target for last value
-                    $.wcb.target = $(this).parent().find('input');
+                    $.trs.target = $(this).parent().find('input');
                     // find select text position
-                    $.wcb.text = $(self).parent().find('.wzcmb');
+                    $.trs.text = $(self).parent().find('.trsel');
                     //if now list show list and countiniu
-                    $(this).append('<ul id="wzcmb-list"></ul>');
+                    $(this).append('<ul id="trsel-list"></ul>');
                     // show first list main cat in list
 
-                    $.wcb.showTree($.wcbStore[$.currentCounter].datatree);
+                    $.trs.showTree($.trsStore[$.currentCounter].datatree);
                     // slide down list
-                    $("#wzcmb-list").slideDown(function () {
-                        $(document).bind('click.handlewsc', function (e) {
-                            if (!$(e.target).is(".wzcmb-childer, .wzcmb-back")) {
-                                $.wcb.resetClose();
-                                $("#wzcmb-list").slideUp(200, function () {
+                    $("#trsel-list").slideDown(function () {
+                        $(document).bind('click.handletrsl', function (e) {
+                            if (!$(e.target).is(".trsel-childer, .trsel-back")) {
+                                $.trs.resetClose();
+                                $("#trsel-list").slideUp(200, function () {
                                     $(this).remove();
                                 });
-                                $($.wcb.text).removeClass('active');
+                                $($.trs.text).removeClass('active');
                             }
                             e.preventDefault();
                             return false;
@@ -123,19 +123,19 @@
                         return;
                     // hide and remove list
                     $(this).removeClass('active');
-                    $("#wzcmb-list").slideUp(100, function () {
-                        // $.wcb.resetClose();
+                    $("#trsel-list").slideUp(100, function () {
+                        // $.trs.resetClose();
                         $(this).remove();
                     })
                 }
             });
 
             //reset
-            $(document).off('click', '#wzcmb-list li');
+            $(document).off('click', '#trsel-list li');
             // on click items
-            $(document).on('click', '#wzcmb-list li', function () {
+            $(document).on('click', '#trsel-list li', function () {
                 // hast child
-                if ($(this).hasClass('wzcmb-childer')) {
+                if ($(this).hasClass('trsel-childer')) {
                     // make navigation
                     var tmp = {
                         title: $.lastx.title,
@@ -145,43 +145,43 @@
                     $.lastx.title = $(this).text();
                     $.lastx.id = $(this).data('id');
                     // show child items
-                    $("#wzcmb-list").addClass('anim out');
-                    $.wcb.showTree($.wcb.findTree($.wcbStore[$.currentCounter].datatree, $(this).data('id')));
+                    $("#trsel-list").addClass('anim out');
+                    $.trs.showTree($.trs.findTree($.trsStore[$.currentCounter].datatree, $(this).data('id')));
                     var ax = setTimeout(function () {
-                        $("#wzcmb-list").removeClass('anim out');
+                        $("#trsel-list").removeClass('anim out');
                     }, 500);
 
-                } else if ($(this).hasClass('wzcmb-back')) { // if click on back
+                } else if ($(this).hasClass('trsel-back')) { // if click on back
                     if ($.navigatex[$.navigatex.length - 1] != undefined) {
                         // roll back navigtaion to last
                         $.lastx.title = $.navigatex[$.navigatex.length - 1].title;
                         $.lastx.id = $.navigatex[$.navigatex.length - 1].id;
                     } else {
                         // check is navigation emoppty set def
-                        $.lastx.title = $.wcbStore[$.currentCounter].mainTitle;
+                        $.lastx.title = $.trsStore[$.currentCounter].mainTitle;
                         $.lastx.id = '';
                     }
                     // pop last navigation item
                     $.navigatex.pop();
                     // get parent list
-                    var lst = $.wcb.findTree($.wcbStore[$.currentCounter].datatree, $(this).data('id'));
+                    var lst = $.trs.findTree($.trsStore[$.currentCounter].datatree, $(this).data('id'));
                     // if has not parent show main cat
-                    $("#wzcmb-list").addClass('anim out');
+                    $("#trsel-list").addClass('anim out');
                     if (lst.length == 0) {
-                        $.wcb.showTree($.wcbStore[$.currentCounter].datatree);
+                        $.trs.showTree($.trsStore[$.currentCounter].datatree);
                     } else {
                         // then show parent list
-                        $.wcb.showTree(lst);
+                        $.trs.showTree(lst);
                     }
                     var ax = setTimeout(function () {
-                        $("#wzcmb-list").removeClass('anim out');
+                        $("#trsel-list").removeClass('anim out');
                     }, 500);
 
                 } else { // choose|select value
                     // OnChange event
-                    $.wcbStore[$.currentCounter].OnChange({
-                        value: $($.wcb.target).val(),
-                        text: $($.wcb.text).clone()    //clone the element
+                    $.trsStore[$.currentCounter].OnChange({
+                        value: $($.trs.target).val(),
+                        text: $($.trs.text).clone()    //clone the element
                             .children() //select all the children
                             .remove()   //remove all the children
                             .end()  //again go back to selected element
@@ -191,17 +191,17 @@
                         text: $(this).text()
                     });
                     // set main input value
-                    $($.wcb.target).val($(this).data('value'));
+                    $($.trs.target).val($(this).data('value'));
                     // set choosed test
-                    $($.wcb.text).text($(this).text());
+                    $($.trs.text).text($(this).text());
                     // remove active class and hide list
-                    $($.wcb.text).removeClass('active');
+                    $($.trs.text).removeClass('active');
                     // OnChange
-                    $.wcbStore[$.currentCounter].OnSelect({
+                    $.trsStore[$.currentCounter].OnSelect({
                         value: $(this).data('value'),
                         text: $(this).text()
                     });
-                    $("#wzcmb-list").slideUp(100, function () {
+                    $("#trsel-list").slideUp(100, function () {
                         $(this).remove();
                     })
                 }
@@ -223,9 +223,9 @@
                 var prefix = base + '-' + (parseInt(ix) + 1);
                 itm.idx = prefix;
                 // if has child
-                if (itm[$.wcbStore[$.scbCounter].json.child].length != 0) {
+                if (itm[$.trsStore[$.scbCounter].json.child].length != 0) {
                     // recall this function for children
-                    itm[$.wcbStore[$.scbCounter].json.child] = $.wcb.makeId(prefix, itm[$.wcbStore[$.scbCounter].json.child]);
+                    itm[$.trsStore[$.scbCounter].json.child] = $.trs.makeId(prefix, itm[$.trsStore[$.scbCounter].json.child]);
                 }
                 all.push(itm);
             }
@@ -239,28 +239,28 @@
         this.showTree = function (list, cb) {
             var content = '';
             // clear li list
-            $("#wzcmb-list li").remove();
+            $("#trsel-list li").remove();
             // back button handle
             // has parent need back button
             if ($.navigatex.length !== 0) {
                 // if navigation is empity not need back button
                 var back = $.navigatex[$.navigatex.length - 1];
-                content += '<li class="wzcmb-back" data-id="' + back.id + '"> &nbsp;' + back.title + '</li>';
+                content += '<li class="trsel-back" data-id="' + back.id + '"> &nbsp;' + back.title + '</li>';
             }
             // show list passed to function
             for (var ix in list) {
                 var item = list[ix];
                 // ad childs
                 // check has child
-                if (item[$.wcbStore[$.currentCounter].json.child].length == 0) {
+                if (item[$.trsStore[$.currentCounter].json.child].length == 0) {
                     var clsx = ' class=""';
                 } else {
-                    var clsx = ' class="wzcmb-childer"';
+                    var clsx = ' class="trsel-childer"';
                 }
                 // li to list
-                content += '<li' + clsx + ' data-id="' + item.idx + '"  data-value="' + item[$.wcbStore[$.currentCounter].json.value] + '">' + item[$.wcbStore[$.currentCounter].json.title] + '</li>';
+                content += '<li' + clsx + ' data-id="' + item.idx + '"  data-value="' + item[$.trsStore[$.currentCounter].json.value] + '">' + item[$.trsStore[$.currentCounter].json.title] + '</li>';
             }
-            $("#wzcmb-list").html(content);
+            $("#trsel-list").html(content);
             if (cb !== undefined) {
                 cb();
             }
@@ -279,14 +279,14 @@
             for (var ix in list) {
                 var item = list[ix];
                 if (item.idx == idx) {
-                    return item[$.wcbStore[$.currentCounter].json.child];
+                    return item[$.trsStore[$.currentCounter].json.child];
                 }
             }
             // if not fond in first level each the childs
             for (var ix in list) {
                 var item = list[ix];
-                if (item[$.wcbStore[$.currentCounter].json.child].length !== 0) {
-                    var tmp = $.wcb.findTree(item[$.wcbStore[$.currentCounter].json.child], idx);
+                if (item[$.trsStore[$.currentCounter].json.child].length !== 0) {
+                    var tmp = $.trs.findTree(item[$.trsStore[$.currentCounter].json.child], idx);
                     // if found idx retrur
                     if (tmp.length !== 0) {
                         return tmp;
@@ -302,23 +302,23 @@
          * reset values on close
          */
         this.resetClose = function () {
-            $.wcbStore[$.currentCounter].onClose();
+            $.trsStore[$.currentCounter].onClose();
             // reset navagtion value
             $.navigatex = [];
             $.lastx = {
-                title: $.wcbStore[$.currentCounter].mainTitle,
+                title: $.trsStore[$.currentCounter].mainTitle,
                 id: ''
             };
 
             // reset docuemnt bind
-            $(document).unbind('click.handlewsc');
+            $(document).unbind('click.handletrsl');
         };
         this.setValue = function (newValue) {
             var currentInnerText = this.html();
             this.html(currentInnerText + " " + newValue)
         };
         this.each(function () {
-            $.wcb.init(this);
+            $.trs.init(this);
         });
         return this;
 
