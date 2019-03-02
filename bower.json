@@ -1,10 +1,10 @@
 {
-  "name": "x-tree-select",
+  "name": "tree-select",
   "license": "GPL-3.0",
   "authors": [
     "4xmen <a1gard@4xmen.ir>"
   ],
-  "description": "A jump-start for jQuery plugins development.",
+  "description": "Tree Select jQuery plugin",
   "keywords": [
     "jquery",
     "plugin",
@@ -12,7 +12,7 @@
     "jquery-plugin",
     "jquery-boilerplate"
   ],
-  "main": "src/x-tree-select.js",
+  "main": "src/tree-select.js",
   "dependencies": {
     "jquery": "1.10.2"
   },
