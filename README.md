@@ -6,7 +6,7 @@ Tree select plugin for jquery
 
 With npm:
 
-`npm install tree-select`
+`npm i x-tree-select`
 
 ## Usage
 
