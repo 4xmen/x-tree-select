@@ -20,10 +20,11 @@
     "jquery-plugin",
     "jquery",
     "tree-select",
+    "x-tree-select",
     "select"
   ],
-  "license": "MIT",
-  "name": "tree-select",
+  "license": "GPL-3.0",
+  "name": "x-tree-select",
   "optionalDependencies": {},
   "repository": {
     "type": "git",

@@ -1,8 +1,8 @@
 {
-  "name": "tree-select",
-  "license": "MIT",
+  "name": "x-tree-select",
+  "license": "GPL-3.0",
   "authors": [
-    "JD-R2 <jon_eldiablo@hotmail.com>"
+    "4xmen <a1gard@4xmen.ir>"
   ],
   "description": "A jump-start for jQuery plugins development.",
   "keywords": [
@@ -12,9 +12,9 @@
     "jquery-plugin",
     "jquery-boilerplate"
   ],
-  "main": "src/tree-select.js",
+  "main": "src/x-tree-select.js",
   "dependencies": {
-    "jquery": "2.2.4"
+    "jquery": "1.10.2"
   },
   "ignore": [
     "npm-debug.log",
