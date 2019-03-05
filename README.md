@@ -4,53 +4,59 @@ Tree select plugin for jquery
 
 ## installation
 
-With npm:
-
-`npm i x-tree-select`
++ npm:
+    + `npm i x-tree-select`
++ yarn:
+    + `yarn add x-tree-select`
 
 ## Usage
 
 + Include css file:
-
-`<link rel="stylesheet" href="../dist/tree-select.css">`
+    + ```html
+        <link rel="stylesheet" href="../dist/x-tree-select.css">
+      ```
 
 + Include js file:
-
-`<script src="../dist/tree-select.js"></script>`
+    + ```html
+        <script src="../dist/x-tree-select.js"></script>
+      ```
 
 + Add to input:
 ```html
-<input type="text" name="test" id="test" placeholder="plz select"/>
-<script>
-        $("#test").treeSelect({
-            mainTitle: 'x main cat',
-            datatree: [{
-                title: 'text1',
-                value: 1,
-                child: []
-            }, {
-                title: 'text2',
-                value: 2,
-                child: []
+    <input type="text"
+       name="test"
+       id="test"
+       placeholder="plz select"/>
+    <script>
+    $("#test").treeSelect({
+        mainTitle: 'x main cat',
+        datatree: [{
+            title: 'text1',
+            value: 1,
+            child: []
+        }, {
+            title: 'text2',
+            value: 2,
+            child: []
+        },
+            {
+                title: 'text3',
+                value: 3,
+                child: [
+                    {
+                        title: 'lv2 text3',
+                        value: 3,
+                        child: []
+                    },
+                    {
+                        title: 'lv2 text5',
+                        value: 5,
+                        child: []
+                    }
+                ]
             },
-                {
-                    title: 'text3',
-                    value: 3,
-                    child: [
-                        {
-                            title: 'lv2 text3',
-                            value: 3,
-                            child: []
-                        },
-                        {
-                            title: 'lv2 text5',
-                            value: 5,
-                            child: []
-                        }
-                    ]
-                },
-            ]
-        });
+        ]
+    });
 
 </script>
 ```
@@ -64,7 +70,7 @@ The tree select options you can customize your plugine usagae
 |`mainTitle`| "Main category"| The title of back button to main category list |
 |`json`| `{title: 'title',value: 'value',child: 'child'}`| The json for your data tree key names you can change keys|
 
-##events
+## events
 The event you can use for tree select
 
 ### onOpen

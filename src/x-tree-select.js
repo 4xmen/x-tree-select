@@ -1,17 +1,9 @@
-/*
- *  tree-select - v1.0.0
- *  Tree select for jquery.
- *  
- *
- *  Made by 4xmen
- *  Under MIT License
- */
 ;(function ($) {
     "use strict";
     $.fn.treeSelect = function (options) {
 
         // set default store for setting
-        if ($.trsStore == undefined) {
+        if ($.trsStore === undefined) {
             $.scbCounter = -1;
             $.trsStore = [];
             $.currentCounter = 0;
@@ -24,14 +16,10 @@
         var settings = $.extend({
             datatree: [],
             direction: 'ltr',
-            onOpen: function () {
-            },
-            OnSelect: function (selected) {
-            },
-            OnChange: function (oldVal, newVal) {
-            },
-            onClose: function () {
-            },
+            onOpen:function(){},
+            OnSelect:function(selected) {},
+            OnChange:function(oldVal, newVal) {},
+            onClose:function() {},
             mainTitle: 'Main category',
             json: {
                 title: 'title',
@@ -70,15 +58,14 @@
             // set placehodler
             var placeholder = 'Please select';
             // check place holder
-            if ($(self).attr('placeholder') != undefined) {
+            if ($(self).attr('placeholder') !== undefined) {
                 placeholder = $(self).attr('placeholder');
             }
 
             // set rtl class if is rtl
-            if ($.trsStore[$.scbCounter].direction == 'rtl') {
-                var rtlClass = 'trs-rtl';
-            } else {
-                var rtlClass = '';
+            var rtlClass = '';
+            if ($.trsStore[$.scbCounter].direction === 'rtl') {
+                rtlClass = 'trs-rtl';
             }
 
             // init element for click for choose
@@ -105,7 +92,7 @@
                     $.trs.text = $(self).parent().find('.trsel');
                     //if now list show list and countiniu
                     $(this).append('<ul id="trsel-list"></ul>');
-                    if ($.trsStore[$.currentCounter].navx == undefined){
+                    if ($.trsStore[$.currentCounter].navx === undefined){
                         // show first list main cat in list
                         $.trs.showTree($.trsStore[$.currentCounter].datatree);
                     } else {
@@ -115,7 +102,7 @@
                     }
                     // slide down list
                     $("#trsel-list").slideDown(function () {
-                        $(document).bind('click.handletrsl', function (e) {
+                        $(document).bind('click.handvarrsl', function (e) {
                             if (!$(e.target).is(".trsel-childer, .trsel-back")) {
                                 $.trs.resetClose();
                                 $("#trsel-list").slideUp(200, function () {
@@ -166,7 +153,7 @@
                     }, 500);
 
                 } else if ($(this).hasClass('trsel-back')) { // if click on back
-                    if ($.navigatex[$.navigatex.length - 1] != undefined) {
+                    if ($.navigatex[$.navigatex.length - 1] !== undefined) {
                         // roll back navigtaion to last
                         $.lastx.title = $.navigatex[$.navigatex.length - 1].title;
                         $.lastx.id = $.navigatex[$.navigatex.length - 1].id;
@@ -181,7 +168,7 @@
                     var lst = $.trs.findTree($.trsStore[$.currentCounter].datatree, $(this).data('id'));
                     // if has not parent show main cat
                     $("#trsel-list").addClass('anim out');
-                    if (lst.length == 0) {
+                    if (lst.length === 0) {
                         $.trs.showTree($.trsStore[$.currentCounter].datatree);
                     } else {
                         // then show parent list
@@ -228,7 +215,7 @@
                     })
                 }
             });
-        }
+        };
 
         /**
          * make idx for navigatopm
@@ -244,8 +231,12 @@
                 // add prefix + - + counter
                 var prefix = base + '-' + (parseInt(ix) + 1);
                 itm.idx = prefix;
+                //if there is no child object, just create it
+                if (itm[$.trsStore[$.scbCounter].json.child]===undefined){
+                    itm[$.trsStore[$.scbCounter].json.child]=[];
+                }
                 // if has child
-                if (itm[$.trsStore[$.scbCounter].json.child].length != 0) {
+                if (itm[$.trsStore[$.scbCounter].json.child].length !== 0) {
                     // recall this function for children
                     itm[$.trsStore[$.scbCounter].json.child] = $.trs.makeId(prefix, itm[$.trsStore[$.scbCounter].json.child]);
                 }
@@ -257,6 +248,7 @@
         /**
          * show list into selector
          * @param list
+         * @param cb
          */
         this.showTree = function (list, cb) {
             var content = '';
@@ -274,10 +266,9 @@
                 var item = list[ix];
                 // ad childs
                 // check has child
-                if (item[$.trsStore[$.currentCounter].json.child].length == 0) {
-                    var clsx = ' class=""';
-                } else {
-                    var clsx = ' class="trsel-childer"';
+                var clsx = ' class="trsel-childer"';
+                if (item[$.trsStore[$.currentCounter].json.child].length === 0) {
+                    clsx = ' class=""';
                 }
                 // li to list
                 content += '<li' + clsx + ' data-id="' + item.idx + '"  data-value="' + item[$.trsStore[$.currentCounter].json.value] + '">' + item[$.trsStore[$.currentCounter].json.title] + '</li>';
@@ -300,7 +291,7 @@
             // each first level of list
             for (var ix in list) {
                 var item = list[ix];
-                if (item.idx == idx) {
+                if (item.idx === idx) {
                     return item[$.trsStore[$.currentCounter].json.child];
                 }
             }
@@ -333,7 +324,7 @@
             };
 
             // reset docuemnt bind
-            $(document).unbind('click.handletrsl');
+            $(document).unbind('click.handvarrsl');
         };
         this.setValue = function (newValue) {
             var currentInnerText = this.html();
