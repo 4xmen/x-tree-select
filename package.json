@@ -3,6 +3,11 @@
     "name": "4xmen",
     "url": "http://4xmen.ir"
   },
+  "files": [
+    "dist/x-tree-select.min.css",
+    "dist/x-tree-select.min.js"
+  ],
+  "main": "module/index.js",
   "dependencies": {
     "jquery": ">=1.10.2"
   },
