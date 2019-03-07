@@ -60,6 +60,58 @@ Tree select plugin for jquery
 
 </script>
 ```
+
+## how use in webpack
++ import the module: 
+
+``import xtreeselec from 'x-tree-select';``
++ add your element:
+
+``<input type="text" name="test" class="treeSelect" placeholder="plz select"/>``
+
++ initialze the element with js:
+```javascript
+$(".treeSelect").treeSelect({
+        datatree: [
+            // your json here
+        ]
+      });
+```
+
++ for example in webpack vuejs
+```html
+<template>
+    <div>
+        <input type="text" name="test" class="treeSelect" placeholder="plz select"/>
+    </div>
+</template>
+<script>
+
+  import xtreeselec from 'x-tree-select';
+  export default {
+    name: "mycompnent",
+    data: function () {
+      return {
+         // ... 
+      }
+    },
+    mounted: function () {
+      
+      $(".treeSelect").treeSelect({
+        datatree: [
+            // ...
+        ]
+      });
+
+    }
+  }
+</script>
+
+<style scoped>
+
+</style>
+```
+
 ## Options
 The tree select options you can customize your plugine usagae
 
@@ -132,3 +184,5 @@ If you found a bug or have a feature suggestion, please submit it in the Issues 
 
 ## Demo
 See `demo/index.html` for demo.
+you can see online example (demo) here:
+http://4xmen.ir/github_example/tree-select/demo/
