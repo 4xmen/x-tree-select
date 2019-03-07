@@ -184,5 +184,7 @@ If you found a bug or have a feature suggestion, please submit it in the Issues 
 
 ## Demo
 See `demo/index.html` for demo.
-you can see online example (demo) here:
+
+you can see online demo (example) here:
+
 http://4xmen.ir/github_example/tree-select/demo/
