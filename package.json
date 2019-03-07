@@ -7,7 +7,7 @@
     "dist/x-tree-select.min.css",
     "dist/x-tree-select.min.js",
     "dist/left.png",
-    "dist/right.png",
+    "dist/right.png"
   ],
   "main": "module/index.js",
   "dependencies": {
