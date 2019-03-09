@@ -1,5 +1,5 @@
 /*
- *  x-tree-select - v1.2.1
+ *  x-tree-select - v1.3.0
  *  Tree select for jquery.
  *  
  *
@@ -9,14 +9,12 @@
 ;(function ($) {
     "use strict";
     $.fn.treeSelect = function (options) {
-
-
         $.treeselect_animation = {
             'none': '',
             'x-flip': 'anim xout',
             'fade': 'xfade',
             'slide': 'xslide'
-        }
+        };
 
         // set default store for setting
         if ($.trsStore === undefined) {
@@ -41,6 +39,7 @@
             },
             onClose: function () {
             },
+            selectablePrernt: false,
             mainTitle: 'Main category',
             json: {
                 title: 'title',
@@ -155,9 +154,9 @@
             //reset
             $(document).off('click', '#trsel-list li');
             // on click items
-            $(document).on('click', '#trsel-list li', function () {
-                // hast child
-                if ($(this).hasClass('trsel-childer')) {
+            $(document).on('click', '#trsel-list li', function (e) {
+                // has child & no parent selecatble
+                if ($(this).hasClass('trsel-childer') && !$(e.target).hasClass('trsel-selectable')) {
                     // make navigation
                     var tmp = {
                         title: $.lastx.title,
@@ -288,6 +287,7 @@
             if ($.navigatex.length !== 0) {
                 // if navigation is empity not need back button
                 var back = $.navigatex[$.navigatex.length - 1];
+
                 content += '<li class="trsel-back" data-id="' + back.id + '"> &nbsp;' + back.title + '</li>';
             }
             // show list passed to function
@@ -296,11 +296,17 @@
                 // ad childs
                 // check has child
                 var clsx = ' class="trsel-childer"';
+                var select = '';
                 if (item[$.trsStore[$.currentCounter].json.child].length === 0) {
                     clsx = ' class=""';
+                } else {
+                    if ($.trsStore[$.currentCounter].selectablePrernt) {
+                        var select = '<span class="trsel-selectable"></span>';
+                    }
                 }
+
                 // li to list
-                content += '<li' + clsx + ' data-id="' + item.idx + '"  data-value="' + item[$.trsStore[$.currentCounter].json.value] + '">' + item[$.trsStore[$.currentCounter].json.title] + '</li>';
+                content += '<li' + clsx + ' data-id="' + item.idx + '"  data-value="' + item[$.trsStore[$.currentCounter].json.value] + '">' + select + item[$.trsStore[$.currentCounter].json.title] + '</li>';
             }
             $("#trsel-list").html(content);
             if (cb !== undefined) {
@@ -351,7 +357,6 @@
                 title: $.trsStore[$.currentCounter].mainTitle,
                 id: ''
             };
-
             // reset docuemnt bind
             $(document).unbind('click.handvarrsl');
         };
