@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>
-        x-tree-select
+        x-tree-select (tree select) - Demo
     </title>
     <!--load assetes-->
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -12,23 +12,340 @@
 
     <!--just for demo-->
     <script src="assets/prism.js"></script>
-    <link rel="stylesheet" href="assets/prism.css">
+    <link rel="stylesheet" href="assets/demo.css">
     <script src="assets/demo.js"></script>
     <!--just for demo end-->
 
 </head>
 
 <body>
+<h1>
+    x-tree-select (tree select) - Demo
+</h1>
+<h3 data-id=".demo0">
+    Default json datatree 🔽
+</h3>
+<div class="code-demo demo0">
+
+    <h4>
+        datatree json
+    </h4>
+    <pre><code class="language-js">
+var defJson = [{
+    title: 'text1',
+    value: 1,
+    child: []
+}, {
+    title: 'text2',
+    value: 2,
+},
+    {
+        title: 'text3',
+        value: 3,
+        child: [
+            {
+                title: 'lv2 text3',
+                value: 3,
+                child: []
+            },
+            {
+                title: 'lv2 text4',
+                value: 4,
+                child: [
+                    {
+                        title: 'lv3 text3',
+                        value: 3,
+                        child: []
+                    },
+                    {
+                        title: 'lv3 text4',
+                        value: 4,
+                        child: []
+                    },
+                    {
+                        title: 'lv3 text5',
+                        value: 5,
+                        child: []
+                    },
+                ]
+            },
+            {
+                title: 'lv2 text5',
+                value: 5,
+                child: []
+            }
+        ]
+    },
+    {
+        title: 'text4',
+        value: 4,
+        child: []
+    },
+    {
+        title: 'text5',
+        value: 5,
+        child: []
+    },
+];
+</code></pre>
+
+</div>
+
+<h2>
+    Usual sample & with form <sub>stackable</sub>
+</h2>
 <form method="get" action="">
     <div style="width: 50%;margin: 50px auto;">
-        <input type="text" name="test" id="test" placeholder="plz select"/>
+        <input type="text" name="myname" required id="test" placeholder="Plz select an item"/>
     </div>
     <input type="submit" value="send"/>
+
 </form>
+<h3 data-id=".demo1">
+    Show souce code 🔽
+</h3>
+<div class="code-demo demo1">
+    <h4>
+        HTML
+    </h4>
+    <pre><code class="language-html">
+&lt;form method="get" action=""&gt;
+    &lt;div style="width: 50%;margin: 50px auto;"&gt;
+        &lt;input type="text" nname="myname" required  id="test" placeholder="plz select"/&gt;
+    &lt;/div&gt;
+    &lt;input type="submit" value="send"/&gt;
+&lt;/form&gt;
+</code></pre>
+    <h4>
+        Javascript
+    </h4>
+<pre><code class="language-js">
+$("#test").treeSelect({
+    datatree: defJson
+});
+</code></pre>
+</div>
+<hr>
+<br>
+<br>
+<br>
+<h2>
+    Right to left & custom title
+</h2>
 <br>
 <div>
-    <input type="text" id="test2" placeholder="Pleasem choose an item"/>
+    <input type="text" id="demo2" placeholder="Pleasem choose an item"/>
 </div>
+<br>
+<br>
+<br>
+<h3 data-id=".demo2">
+    Show souce code 🔽
+</h3>
+<div class="code-demo demo2">
+    <h4>
+        HTML
+    </h4>
+    <pre><code class="language-html">
+&lt;input type="text" id="demo2" placeholder="Pleasem choose an item"/&gt;
+</code></pre>
+    <h4>
+        Javascript
+    </h4>
+    <pre><code class="language-js">
+$("#demo2").treeSelect({
+    mainTitle: 'سرفصل های اصلی',
+    direction: 'rtl',
+    datatree: defJson
+});
+</code></pre>
+</div>
+<hr>
+<br>
+<br>
+<br>
+<h2>
+    Selectable parent & slide transtion
+</h2>
+<br>
+<div>
+    <input type="text" id="demo3" placeholder="Pleasem choose an item"/>
+</div>
+<br>
+<br>
+<br>
+<h3 data-id=".demo3">
+    Show souce code 🔽
+</h3>
+<div class="code-demo demo3">
+    <h4>
+        HTML
+    </h4>
+    <pre><code class="language-html">
+&lt;input type="text" id="demo3" placeholder="Pleasem choose an item"/&gt;
+</code></pre>
+    <h4>
+        Javascript
+    </h4>
+    <pre><code class="language-js">
+$("#demo3").treeSelect({
+    transition: 'slide',
+    selectablePrernt: true,
+    datatree: defJson
+});
+</code></pre>
+</div>
+<hr>
+<br>
+<br>
+<br>
+<h2>
+    Events demo without transtion
+</h2>
+<br>
+<div>
+    <input type="text" id="demo4" placeholder="Pleasem choose an item"/>
+</div>
+<p>
+    For watch events result open browser console
+</p>
+<br>
+<br>
+<br>
+<h3 data-id=".demo4">
+    Show souce code 🔽
+</h3>
+<div class="code-demo demo4">
+    <h4>
+        HTML
+    </h4>
+    <pre><code class="language-html">
+&lt;input type="text" id="demo4" placeholder="Pleasem choose an item"/&gt;
+</code></pre>
+    <h4>
+        Javascript
+    </h4>
+    <pre><code class="language-js">
+$("#demo4").treeSelect({
+    datatree: defJson,
+    transition: 'none',
+    onOpen: function () {
+        console.log('onOpen event triggered');
+    }, onClose: function () {
+        console.log('onClose event triggered');
+    }, OnSelect: function (sel) {
+        console.log('onSelect event triggered secleted : ');
+        console.log(sel);
+    }, OnChange: function (oldv, newv) {
+        console.log('OnChange event triggered old: ', oldv, 'new:', newv);
+    }
+});
+</code></pre>
+</div>
+
+<hr>
+<br>
+<br>
+<br>
+<h2>
+    Custom json
+</h2>
+<br>
+<div>
+    <input type="text" id="demo5" placeholder="Pleasem choose an item"/>
+</div>
+<br>
+<br>
+<br>
+<h3 data-id=".demo5">
+    Show souce code 🔽
+</h3>
+<div class="code-demo demo5">
+    <h4>
+        HTML
+    </h4>
+    <pre><code class="language-html">
+&lt;input type="text" id="demo5" placeholder="Pleasem choose an item"/&gt;
+</code></pre>
+    <h4>
+        Javascript
+    </h4>
+    <pre><code class="language-js">
+$("#demo5").treeSelect({
+    json: {
+        title: 't',
+        value: 'v',
+        child: 'c'
+    },
+    datatree: [{
+        t: '*** text1',
+        v: 1,
+        c: []
+    }, {
+        t: '*** text2',
+        v: 2,
+        c: []
+    },
+        {
+            t: '*** text3',
+            v: 3,
+            c: [
+                {
+                    t: '*** lv2 text3',
+                    v: 3,
+                    c: []
+                },
+                {
+                    t: '*** lv2 text4',
+                    v: 4,
+                    c: [
+                        {
+                            t: '*** lv3 text3',
+                            v: 3,
+                            c: []
+                        },
+                        {
+                            t: '*** lv3 text4',
+                            v: 4,
+                        },
+                        {
+                            t: '*** lv3 text5',
+                            v: 5,
+                            c: []
+                        },
+                    ]
+                },
+                {
+                    t: '*** lv2 text5',
+                    v: 5,
+                    c: []
+                }
+            ]
+        },
+        {
+            t: '*** text4',
+            v: 4,
+            c: []
+        },
+        {
+            t: '*** text5',
+            v: 5,
+            c: []
+        },
+    ]
+});
+</code></pre>
+</div>
+<br>
+<br>
+<br>
+<footer>
+    Copyright &copy; 2012 - <a href="http://4xmen.ir"> 4xmen team</a>
+</footer>
+
+<!--for demo-->
+<link rel="stylesheet" href="assets/prism.css">
+
 </body>
 
 </html>

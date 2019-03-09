@@ -1,0 +1,35 @@
+body{
+    background: #efefef;
+    font-family: 'tahoma','ubuntu';
+}
+
+h1{
+    text-align: center;
+    background: #fff;
+    color: #f92672;
+    padding: .4em 1em;
+}
+
+h3{
+    cursor: pointer;
+    background: #66d9ef;
+    padding: 10px;
+    margin-bottom: 0;
+}
+.code-demo{
+    display: none;
+    background: #444;
+    color: #fff;
+    padding: 1em 10px;
+}
+footer{
+    text-align: center;
+    padding: 1em;
+    background: darkred;
+    color: #fff;
+    font-size: large;
+}
+
+footer a,footer a:visited{
+    color: aliceblue;
+}
