@@ -57,10 +57,29 @@
 }
 
 
-#trsel-list.out{
+#trsel-list.xout{
     transform-origin: center right;
     transform-style: preserve-3d;
     transform: translateX(-100%) rotateY(-180deg) skew(0deg) ;
+}
+
+#trsel-list.xfade li{
+    opacity: 0;
+}
+
+#trsel-list li{
+    -webkit-transition: all .55s linear;
+    -moz-transition: all .55s linear;
+    -o-transition: all .55s linear;
+    transition: all .55s linear;
+    max-height: 30px;
+}
+
+#trsel-list.xslide li{
+    max-height: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0;
 }
 .anim{
     -webkit-transition: all .6s linear;

@@ -1,5 +1,5 @@
 /*
- *  x-tree-select - v1.1.2
+ *  x-tree-select - v1.2.1
  *  Tree select for jquery.
  *  
  *
@@ -9,6 +9,14 @@
 ;(function ($) {
     "use strict";
     $.fn.treeSelect = function (options) {
+
+
+        $.treeselect_animation = {
+            'none': '',
+            'x-flip': 'anim xout',
+            'fade': 'xfade',
+            'slide': 'xslide'
+        }
 
         // set default store for setting
         if ($.trsStore === undefined) {
@@ -23,11 +31,16 @@
         // change plugin info
         var settings = $.extend({
             datatree: [],
+            transition: 'fade',
             direction: 'ltr',
-            onOpen:function(){},
-            OnSelect:function(selected) {},
-            OnChange:function(oldVal, newVal) {},
-            onClose:function() {},
+            onOpen: function () {
+            },
+            OnSelect: function (selected) {
+            },
+            OnChange: function (oldVal, newVal) {
+            },
+            onClose: function () {
+            },
             mainTitle: 'Main category',
             json: {
                 title: 'title',
@@ -100,7 +113,7 @@
                     $.trs.text = $(self).parent().find('.trsel');
                     //if now list show list and countiniu
                     $(this).append('<ul id="trsel-list"></ul>');
-                    if ($.trsStore[$.currentCounter].navx === undefined){
+                    if ($.trsStore[$.currentCounter].navx === undefined) {
                         // show first list main cat in list
                         $.trs.showTree($.trsStore[$.currentCounter].datatree);
                     } else {
@@ -153,12 +166,19 @@
                     $.navigatex.push(tmp);
                     $.lastx.title = $(this).text();
                     $.lastx.id = $(this).data('id');
-                    // show child items
-                    $("#trsel-list").addClass('anim out');
-                    $.trs.showTree($.trs.findTree($.trsStore[$.currentCounter].datatree, $(this).data('id')));
+
+
+                    // transtion ;
+                    $("#trsel-list").addClass($.treeselect_animation[$.trsStore[$.currentCounter].transition]);
+
+
+                    var xself = this;
                     var ax = setTimeout(function () {
-                        $("#trsel-list").removeClass('anim out');
-                    }, 500);
+                        // show child items
+                        $.trs.showTree($.trs.findTree($.trsStore[$.currentCounter].datatree, $(xself).data('id')));
+                        // remove effect
+                        $("#trsel-list").removeClass($.treeselect_animation[$.trsStore[$.currentCounter].transition]);
+                    }, 600);
 
                 } else if ($(this).hasClass('trsel-back')) { // if click on back
                     if ($.navigatex[$.navigatex.length - 1] !== undefined) {
@@ -175,16 +195,17 @@
                     // get parent list
                     var lst = $.trs.findTree($.trsStore[$.currentCounter].datatree, $(this).data('id'));
                     // if has not parent show main cat
-                    $("#trsel-list").addClass('anim out');
-                    if (lst.length === 0) {
-                        $.trs.showTree($.trsStore[$.currentCounter].datatree);
-                    } else {
-                        // then show parent list
-                        $.trs.showTree(lst);
-                    }
+                    $("#trsel-list").addClass($.treeselect_animation[$.trsStore[$.currentCounter].transition]);
+
                     var ax = setTimeout(function () {
-                        $("#trsel-list").removeClass('anim out');
-                    }, 500);
+                        if (lst.length === 0) {
+                            $.trs.showTree($.trsStore[$.currentCounter].datatree);
+                        } else {
+                            // then show parent list
+                            $.trs.showTree(lst);
+                        }
+                        $("#trsel-list").removeClass($.treeselect_animation[$.trsStore[$.currentCounter].transition]);
+                    }, 600);
 
                 } else { // choose|select value
                     // OnChange event
@@ -205,11 +226,11 @@
                     $($.trs.text).text($(this).text());
                     // if selected is not first level store level & last titles
                     if ($.navigatex.length > 0) {
-                        $.trsStore[$.currentCounter].navx = $.navigatex ;
-                        $.trsStore[$.currentCounter].lastx = $.lastx ;
-                    }else{
-                        delete $.trsStore[$.currentCounter].navx ;
-                        delete $.trsStore[$.currentCounter].lastx ;
+                        $.trsStore[$.currentCounter].navx = $.navigatex;
+                        $.trsStore[$.currentCounter].lastx = $.lastx;
+                    } else {
+                        delete $.trsStore[$.currentCounter].navx;
+                        delete $.trsStore[$.currentCounter].lastx;
                     }
                     // remove active class and hide list
                     $($.trs.text).removeClass('active');
@@ -240,8 +261,8 @@
                 var prefix = base + '-' + (parseInt(ix) + 1);
                 itm.idx = prefix;
                 //if there is no child object, just create it
-                if (itm[$.trsStore[$.scbCounter].json.child]===undefined){
-                    itm[$.trsStore[$.scbCounter].json.child]=[];
+                if (itm[$.trsStore[$.scbCounter].json.child] === undefined) {
+                    itm[$.trsStore[$.scbCounter].json.child] = [];
                 }
                 // if has child
                 if (itm[$.trsStore[$.scbCounter].json.child].length !== 0) {
