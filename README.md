@@ -130,7 +130,7 @@ The event you can use for tree select
 ### onOpen
  Triggered when opening select input
  sample:
- ```
+ ```javascript
  $("#tree-select").treeSelect({
      onOpen: function(){
          alert('opened');
@@ -140,7 +140,7 @@ The event you can use for tree select
 ### onClose
  Triggered when closing select input
  sample:
- ```
+ ```javascript
  $("#tree-select").treeSelect({
      onClose: function(){
          alert('closed');
@@ -151,7 +151,7 @@ The event you can use for tree select
 ### onSelect
  Triggered when selecting select input
  sample:
- ```
+ ```javascript
  $("#tree-select").treeSelect({
      onSelect: function(selected){
          console.log(selected);
@@ -162,7 +162,7 @@ The event you can use for tree select
 ### onChange
  Triggered when change select input value
  sample:
- ```
+ ```javascript
  $("#tree-select").treeSelect({
      onSelect: function(oldVal,newVal){
          console.log(oldVal,newVal);

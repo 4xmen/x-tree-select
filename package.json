@@ -36,7 +36,7 @@
   "optionalDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/4xmen/tree-select.git"
+    "url": "git+https://github.com/4xmen/x-tree-select.git"
   },
-  "version": "1.3.0"
+  "version": "1.3.1"
 }
