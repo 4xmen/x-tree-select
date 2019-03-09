@@ -40,7 +40,7 @@
 }
 
 #trsel-list li.trsel-childer{
-    background: white url("right.png") no-repeat;
+    background: transparent url("right.png") no-repeat;
     background-position-x: calc(100% - 10px) ;
     -ms-background-position-y: center;
     background-position-y: center;
@@ -88,6 +88,18 @@
     transition: all .6s linear;
 }
 
+.trsel-selectable{
+    float: left;
+    width: 1.5em;
+    position: relative;
+    height: 1em;
+    background: transparent url("check-box.png") 5px no-repeat;
+    background-size: auto 95% ;
+    background-position: center;
+    margin-right: .7em;
+}
+
+
 /** rtl support css */
 .trs-rtl{
 }
@@ -104,4 +116,11 @@
     background-image:  url("right.png") !important ;
     background-position-x: calc(100% - 10px) !important;
     padding-right: 30px !important;
+}
+
+
+.trs-rtl .trsel-selectable{
+    float: right;
+    margin-left: .7em;
+    margin-right: 0;
 }

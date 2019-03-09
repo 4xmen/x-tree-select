@@ -6,6 +6,7 @@
   "files": [
     "dist/x-tree-select.min.css",
     "dist/x-tree-select.min.js",
+    "dist/check-box.png",
     "dist/left.png",
     "dist/right.png"
   ],

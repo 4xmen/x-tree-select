@@ -120,7 +120,9 @@ The tree select options you can customize your plugine usagae
 | `direction`| ltr | you can use rtl too for your project|
 | `datatree`| []| The data need navigate in tree select watch abow example to how bind this value|
 |`mainTitle`| "Main category"| The title of back button to main category list |
+|`transition`| "fade"| The change page animation transition effect |
 |`json`| `{title: 'title',value: 'value',child: 'child'}`| The json for your data tree key names you can change keys|
+| `selectablePrernt`| false | Is the parent selectable |
 
 ## events
 The event you can use for tree select
