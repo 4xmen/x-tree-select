@@ -164,7 +164,7 @@ The event you can use for tree select
  sample:
  ```javascript
  $("#tree-select").treeSelect({
-     onSelect: function(oldVal,newVal){
+     onChange: function(oldVal,newVal){
          console.log(oldVal,newVal);
      }
  });
