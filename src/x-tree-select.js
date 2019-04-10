@@ -91,6 +91,15 @@
                 if (e.target !== this) {
                     return;
                 }
+                
+                var trsel = $(this);
+
+                if (trsel.hasClass("loading")) {
+                    return;
+                }
+
+                trsel.addClass("loading");
+                setTimeout(function(){ trsel.removeClass("loading"); }, 600);
 
                 $.currentCounter = $(this).data('trcounter');
                 $.lastx.title = $.trsStore[$.currentCounter].mainTitle;
@@ -139,7 +148,7 @@
                     $("#trsel-list").slideUp(100, function () {
                         // $.trs.resetClose();
                         $(this).remove();
-                    })
+                    });
                 }
             });
 
@@ -228,11 +237,14 @@
                     // OnChange
                     $.trsStore[$.currentCounter].OnSelect({
                         value: $(this).data('value'),
-                        text: $(this).text()
+                        text: $(this).text(),
+                        id: $(this).data('id'),
+                        parent: $.lastx,
+                        ancestors: $.navigatex
                     });
                     $("#trsel-list").slideUp(100, function () {
                         $(this).remove();
-                    })
+                    });
                 }
             });
         };
