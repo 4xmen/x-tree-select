@@ -375,7 +375,7 @@
          * @returns {jQuery|*|boolean|boolean|*}
          */
         this.findItem = function (list, val, c, parent = null) {
-            // ad navigate
+            // add navigate
             if (parent != null) {
                 $.navigatex.push({
                     id: parent.idx,
