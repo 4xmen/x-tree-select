@@ -34,7 +34,7 @@
     <pre><code class="language-js">
 var defJson = [{
     title: 'text1',
-    value: 1,
+    value: 'x1',
     child: []
 }, {
     title: 'text2',
@@ -46,7 +46,7 @@ var defJson = [{
         child: [
             {
                 title: 'lv2 text3',
-                value: 3,
+                value: 'x99',
                 child: []
             },
             {
@@ -97,7 +97,7 @@ var defJson = [{
 </h2>
 <form method="get" action="">
     <div style="width: 50%;margin: 50px auto;">
-        <input type="text" name="myname" required id="test" placeholder="Plz select an item"/>
+        <input type="text" name="myname"  required id="test" placeholder="Plz select an item"/>
     </div>
     <input type="submit" value="send"/>
 
@@ -135,7 +135,7 @@ $("#test").treeSelect({
 </h2>
 <br>
 <div>
-    <input type="text" id="demo2" placeholder="Pleasem choose an item"/>
+    <input type="text" id="demo2"  placeholder="Pleasem choose an item"/>
 </div>
 <br>
 <br>
@@ -166,11 +166,11 @@ $("#demo2").treeSelect({
 <br>
 <br>
 <h2>
-    Selectable parent & slide transtion
+    Selectable parent & slide transtion with default value
 </h2>
 <br>
 <div>
-    <input type="text" id="demo3" placeholder="Pleasem choose an item"/>
+    <input type="text" id="demo3" value="x99" placeholder="Pleasem choose an item"/>
 </div>
 <br>
 <br>

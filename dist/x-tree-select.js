@@ -75,6 +75,7 @@
             $.lastx.title = settings.mainTitle;
             // hide element
             $(self).hide();
+
             // set placehodler
             var placeholder = 'Please select';
             // check place holder
@@ -92,6 +93,7 @@
             $(self).parent().append('<div class="trsel ' + rtlClass + '" data-trcounter="' +
                 $.scbCounter + '" >' + placeholder + '</div>');
 
+
             // initial idx for use in naviagion
             settings.datatree = $.trs.makeId('1', settings.datatree);
             // on click combowizard
@@ -99,7 +101,7 @@
                 if (e.target !== this) {
                     return;
                 }
-                
+
                 var trsel = $(this);
 
                 if (trsel.hasClass("loading")) {
@@ -107,7 +109,9 @@
                 }
 
                 trsel.addClass("loading");
-                setTimeout(function(){ trsel.removeClass("loading"); }, 600);
+                setTimeout(function () {
+                    trsel.removeClass("loading");
+                }, 600);
 
                 $.currentCounter = $(this).data('trcounter');
                 $.lastx.title = $.trsStore[$.currentCounter].mainTitle;
@@ -255,6 +259,10 @@
                     });
                 }
             });
+
+            if ($(self).attr('value') != undefined && $(self).val() != '' && $(self).val() != null) {
+                this.setDefault($.scbCounter, $(self).val());
+            }
         };
 
         /**
@@ -356,6 +364,72 @@
             }
             // then retrun defualt ret var
             return back;
+        };
+
+        /**
+         * find item for default
+         * @param list of function
+         * @param val value must be match
+         * @param c counter of tree select
+         * @param parent the parent value
+         * @returns {jQuery|*|boolean|boolean|*}
+         */
+        this.findItem = function (list, val, c, parent = null) {
+            // ad navigate
+            if (parent != null) {
+                $.navigatex.push({
+                    id: parent.idx,
+                    title: parent[$.trsStore[c].json.title]
+                });
+            } else {
+                $.navigatex.push({
+                    id: "",
+                    title:  $.trsStore[c].mainTitle
+                });
+                $.lastx.title = $.trsStore[c].mainTitle;
+                $.lastx.id = '';
+            }
+            // each all
+            for (const i in list) {
+                var item = list[i];
+                if (item[$.trsStore[c].json.value] == val) {
+                    return item;
+                }
+                // if has child
+                if (item[$.trsStore[c].json.child] != undefined && item[$.trsStore[c].json.child].length > 0) {
+                    // add last
+                    $.lastx = {
+                        id: item.idx,
+                        title: item[$.trsStore[c].json.title]
+                    };
+                    var back = this.findItem(item[$.trsStore[c].json.child], val, c, item);
+                    if (back != false) {
+                        return back;
+                    }
+                }
+                // console.log($.trsStore[c].json.child);
+            }
+
+            $.navigatex.pop();
+            return false;
+
+        }
+
+        /**
+         * set def value initial
+         * @param c counter
+         * @param val value of input
+         */
+        this.setDefault = function (c, val) {
+            // find value
+            var back = $.trs.findItem($.trsStore[c].datatree, val, c);
+            // if is exits val
+            if (back != false) {
+                $.trsStore[c].lastx = $.lastx;
+                $.navigatex.pop();
+                $.trsStore[c].navx = $.navigatex;
+                $("[data-trcounter='" + c + "']").text(back[$.trsStore[c].json.title]);
+            }
         };
 
         /**
