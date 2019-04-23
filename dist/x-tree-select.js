@@ -374,7 +374,8 @@
          * @param parent the parent value
          * @returns {jQuery|*|boolean|boolean|*}
          */
-        this.findItem = function (list, val, c, parent = null) {
+        this.findItem = function (list, val, c, parent) {
+            parent = parent || null;
             // add navigate
             if (parent != null) {
                 $.navigatex.push({
@@ -390,8 +391,8 @@
                 $.lastx.id = '';
             }
             // each all
-            for (const i in list) {
-                var item = list[i];
+            for (var ix in list) {
+                var item = list[ix];
                 if (item[$.trsStore[c].json.value] == val) {
                     return item;
                 }

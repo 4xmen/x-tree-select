@@ -383,8 +383,8 @@
                 $.lastx.id = '';
             }
             // each all
-            for (const i in list) {
-                var item = list[i];
+            for (var ix in list) {
+                var item = list[ix];
                 if (item[$.trsStore[c].json.value] == val) {
                     return item;
                 }
