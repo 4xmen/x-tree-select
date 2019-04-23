@@ -1,5 +1,5 @@
 /*
- *  x-tree-select - v1.3.2
+ *  x-tree-select - v1.3.4
  *  Tree select for jquery.
  *  
  *
@@ -33,9 +33,9 @@
             direction: 'ltr',
             onOpen: function () {
             },
-            OnSelect: function (selected) {
+            onSelect: function (selected) {
             },
-            OnChange: function (oldVal, newVal) {
+            onChange: function (oldVal, newVal) {
             },
             onClose: function () {
             },
@@ -216,8 +216,8 @@
                     }, 600);
 
                 } else { // choose|select value
-                    // OnChange event
-                    $.trsStore[$.currentCounter].OnChange({
+                    // onChange event
+                    $.trsStore[$.currentCounter].onChange({
                         value: $($.trs.target).val(),
                         text: $($.trs.text).clone()    //clone the element
                             .children() //select all the children
@@ -242,8 +242,8 @@
                     }
                     // remove active class and hide list
                     $($.trs.text).removeClass('active');
-                    // OnChange
-                    $.trsStore[$.currentCounter].OnSelect({
+                    // onChange
+                    $.trsStore[$.currentCounter].onSelect({
                         value: $(this).data('value'),
                         text: $(this).text(),
                         id: $(this).data('id'),
