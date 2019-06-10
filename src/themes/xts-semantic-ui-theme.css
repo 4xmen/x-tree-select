@@ -21,11 +21,43 @@
  * @link       https://www.npmjs.com/package/x-tree-select
  */
 .trsel{
+    background-color: #ffffff;
+    text-align: left;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+    background-origin:padding-box;
+    background-position-x:99%;
+    background-position-y: 50%;
+    background-size: 20px 20px;
+    background-image: url('data:image/svg+xml;charset=utf8,<svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>');
+    font-size: 14px;
+    padding-left: 14px;
+    padding-right: 29px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
 
+.trsel:hover{
+    border-color: rgb(150, 200, 218);
 }
 .trs-rtl{
-
+    text-align: right;
+    background-position-x:12px;
+    padding-left: 29px;
+    padding-right: 14px;
 }
 
 #trsel-list {
+    top:20px;
+    border-color: rgb(150, 200, 218);
+}
+
+#trsel-list li{
+    background-color: #fff!important;
+    border-bottom-color: #fafafa;
+    padding: .48571429rem 1.14285714rem!important;
+}
+
+#trsel-list li:hover{
+    background-color: rgba(0,0,0,.05) !important;
 }
