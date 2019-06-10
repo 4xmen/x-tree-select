@@ -1,6 +1,11 @@
 body{
-    background: #efefef;
     font-family: 'tahoma','ubuntu';
+}
+
+section{
+    background: #f5f5f5;
+    padding: .5em 1em;
+    border-radius: 4px;
 }
 
 h1{
@@ -8,13 +13,29 @@ h1{
     background: #fff;
     color: #f92672;
     padding: .4em 1em;
+    font-family: "Segoe UI",Arial,sans-serif;
+}
+
+h2{
+    font-family: "Segoe UI",Arial,sans-serif;
+    font-weight: 100;
 }
 
 h3{
+    font-weight: 100;
     cursor: pointer;
-    background: #66d9ef;
-    padding: 10px;
+    background: #1d92cf;
+    color: #fff;
+    padding: 7px;
     margin-bottom: 0;
+    border-radius: 4px;
+    font-family: "Segoe UI",Arial,sans-serif;
+    position: relative;
+}
+
+h3 svg{
+    position: absolute;
+    top:8px;
 }
 .code-demo{
     display: none;
@@ -25,11 +46,17 @@ h3{
 footer{
     text-align: center;
     padding: 1em;
-    background: darkred;
-    color: #fff;
     font-size: large;
+    color: #272822;
 }
 
 footer a,footer a:visited{
-    color: aliceblue;
+    color: red;
+    text-decoration: none;
+}
+
+hr{
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
 }

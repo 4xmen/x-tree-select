@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="../src/x-tree-select.js"></script>
     <link rel="stylesheet" href="../src/x-tree-select.css">
-    <link rel="stylesheet" href="../src/themes/xts-semantic-ui-theme.css">
+    <link rel="stylesheet" href="../src/themes/xts-bootstrap-theme.css">
     <!--load assetes end-->
 
     <!--just for demo-->
@@ -24,15 +24,16 @@
 <h1>
     x-tree-select (tree select) - Demo
 </h1>
-<h3 data-id=".demo0">
-    Default json datatree 🔽
-</h3>
-<div class="code-demo demo0">
+<section>
+    <h3 data-id=".demo0">
+        Default json datatree <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    </h3>
+    <div class="code-demo demo0">
 
-    <h4>
-        datatree json
-    </h4>
-    <pre><code class="language-js">
+        <h4>
+            datatree json
+        </h4>
+        <pre><code class="language-js">
 var defJson = [{
     title: 'text1',
     value: 'x1',
@@ -91,26 +92,28 @@ var defJson = [{
 ];
 </code></pre>
 
-</div>
-
-<h2>
-    Usual sample & with form <sub>stackable</sub>
-</h2>
-<form method="get" action="">
-    <div style="width: 50%;margin: 50px auto;">
-        <input type="text" name="myname"  required id="test" placeholder="Plz select an item"/>
     </div>
-    <input type="submit" value="send"/>
+</section>
+<section>
 
-</form>
-<h3 data-id=".demo1">
-    Show souce code 🔽
-</h3>
-<div class="code-demo demo1">
-    <h4>
-        HTML
-    </h4>
-    <pre><code class="language-html">
+    <h2>
+        Usual sample & with form <sub>stackable</sub>
+    </h2>
+    <form method="get" action="">
+        <div style="width: 50%;margin: 50px auto;">
+            <input type="text" name="myname" required id="test" placeholder="Plz select an item"/>
+        </div>
+        <input type="submit" value="send"/>
+
+    </form>
+    <h3 data-id=".demo1">
+        Show souce code <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    </h3>
+    <div class="code-demo demo1">
+        <h4>
+            HTML
+        </h4>
+        <pre><code class="language-html">
 &lt;form method="get" action=""&gt;
     &lt;div style="width: 50%;margin: 50px auto;"&gt;
         &lt;input type="text" nname="myname" required  id="test" placeholder="plz select"/&gt;
@@ -118,116 +121,116 @@ var defJson = [{
     &lt;input type="submit" value="send"/&gt;
 &lt;/form&gt;
 </code></pre>
-    <h4>
-        Javascript
-    </h4>
-<pre><code class="language-js">
+        <h4>
+            Javascript
+        </h4>
+        <pre><code class="language-js">
 $("#test").treeSelect({
     datatree: defJson
 });
 </code></pre>
-</div>
+    </div>
+</section>
+
 <hr>
-<br>
-<br>
-<br>
-<h2>
-    Right to left & custom title
-</h2>
-<br>
-<div>
-    <input type="text" id="demo2"  placeholder="Pleasem choose an item"/>
-</div>
-<br>
-<br>
-<br>
-<h3 data-id=".demo2">
-    Show souce code 🔽
-</h3>
-<div class="code-demo demo2">
-    <h4>
-        HTML
-    </h4>
-    <pre><code class="language-html">
+<section>
+
+    <h2>
+        Right to left & custom title
+    </h2>
+    <br>
+    <div>
+        <input type="text" id="demo2" placeholder="Pleasem choose an item"/>
+    </div>
+    <br>
+
+    <h3 data-id=".demo2">
+        Show souce code <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    </h3>
+    <div class="code-demo demo2">
+        <h4>
+            HTML
+        </h4>
+        <pre><code class="language-html">
 &lt;input type="text" id="demo2" placeholder="Pleasem choose an item"/&gt;
 </code></pre>
-    <h4>
-        Javascript
-    </h4>
-    <pre><code class="language-js">
+        <h4>
+            Javascript
+        </h4>
+        <pre><code class="language-js">
 $("#demo2").treeSelect({
     mainTitle: 'سرفصل های اصلی',
     direction: 'rtl',
     datatree: defJson
 });
 </code></pre>
-</div>
+    </div>
+</section>
+
 <hr>
-<br>
-<br>
-<br>
-<h2>
-    Selectable parent & slide transtion with default value
-</h2>
-<br>
-<div>
-    <input type="text" id="demo3" value="x99" placeholder="Pleasem choose an item"/>
-</div>
-<br>
-<br>
-<br>
-<h3 data-id=".demo3">
-    Show souce code 🔽
-</h3>
-<div class="code-demo demo3">
-    <h4>
-        HTML
-    </h4>
-    <pre><code class="language-html">
+<section>
+
+    <h2>
+        Selectable parent & slide transtion with default value
+    </h2>
+    <br>
+    <div>
+        <input type="text" id="demo3" value="x99" placeholder="Pleasem choose an item"/>
+    </div>
+    <br>
+    <h3 data-id=".demo3">
+        Show souce code <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    </h3>
+    <div class="code-demo demo3">
+        <h4>
+            HTML
+        </h4>
+        <pre><code class="language-html">
 &lt;input type="text" id="demo3" placeholder="Pleasem choose an item"/&gt;
 </code></pre>
-    <h4>
-        Javascript
-    </h4>
-    <pre><code class="language-js">
+        <h4>
+            Javascript
+        </h4>
+        <pre><code class="language-js">
 $("#demo3").treeSelect({
     transition: 'slide',
     selectablePrernt: true,
     datatree: defJson
 });
 </code></pre>
-</div>
+    </div>
+</section>
+
 <hr>
-<br>
-<br>
-<br>
-<h2>
-    Events demo without transtion
-</h2>
-<br>
-<div>
-    <input type="text" id="demo4" placeholder="Pleasem choose an item"/>
-</div>
-<p>
-    For watch events result open browser console
-</p>
-<br>
-<br>
-<br>
-<h3 data-id=".demo4">
-    Show souce code 🔽
-</h3>
-<div class="code-demo demo4">
-    <h4>
-        HTML
-    </h4>
-    <pre><code class="language-html">
+<section>
+
+    <h2>
+        Events demo without transtion
+    </h2>
+    <br>
+    <div>
+        <input type="text" id="demo4" placeholder="Pleasem choose an item"/>
+    </div>
+    <p>
+        For watch events result open browser console
+    </p>
+    <br>
+    <br>
+    <br>
+    <h3 data-id=".demo4">
+        Show souce code <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    </h3>
+    <div class="code-demo demo4">
+        <h4>
+            HTML
+        </h4>
+        <pre><code class="language-html">
 &lt;input type="text" id="demo4" placeholder="Pleasem choose an item"/&gt;
 </code></pre>
-    <h4>
-        Javascript
-    </h4>
-    <pre><code class="language-js">
+        <h4>
+            Javascript
+        </h4>
+        <pre><code class="language-js">
 $("#demo4").treeSelect({
     datatree: defJson,
     transition: 'none',
@@ -243,36 +246,34 @@ $("#demo4").treeSelect({
     }
 });
 </code></pre>
-</div>
+    </div>
+</section>
 
 <hr>
-<br>
-<br>
-<br>
-<h2>
-    Custom json
-</h2>
-<br>
-<div>
-    <input type="text" id="demo5" placeholder="Pleasem choose an item"/>
-</div>
-<br>
-<br>
-<br>
-<h3 data-id=".demo5">
-    Show souce code 🔽
-</h3>
-<div class="code-demo demo5">
-    <h4>
-        HTML
-    </h4>
-    <pre><code class="language-html">
+<section>
+
+    <h2>
+        Custom json
+    </h2>
+    <br>
+    <div>
+        <input type="text" id="demo5" placeholder="Pleasem choose an item"/>
+    </div>
+    <br>
+    <h3 data-id=".demo5">
+        Show souce code <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    </h3>
+    <div class="code-demo demo5">
+        <h4>
+            HTML
+        </h4>
+        <pre><code class="language-html">
 &lt;input type="text" id="demo5" placeholder="Pleasem choose an item"/&gt;
 </code></pre>
-    <h4>
-        Javascript
-    </h4>
-    <pre><code class="language-js">
+        <h4>
+            Javascript
+        </h4>
+        <pre><code class="language-js">
 $("#demo5").treeSelect({
     json: {
         title: 't',
@@ -337,10 +338,9 @@ $("#demo5").treeSelect({
     ]
 });
 </code></pre>
-</div>
-<br>
-<br>
-<br>
+    </div>
+</section>
+
 <footer>
     Copyright &copy; 2012 - <a href="http://4xmen.ir"> 4xmen team</a>
 </footer>
