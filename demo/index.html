@@ -342,12 +342,17 @@ $("#demo5").treeSelect({
 </section>
 
 <footer>
-    Copyright &copy; 2012 - <a href="http://4xmen.ir"> 4xmen team</a>
+    Copyright &copy; 2012 - <span id="y"> </span><a href="http://4xmen.ir"> 4xmen team</a>
 </footer>
 
 <!--for demo-->
 <link rel="stylesheet" href="assets/prism.css">
-
+<script>
+    $(function () {
+        var dt = new Date();
+        $("#y").text(dt.getFullYear());
+    });
+</script>
 </body>
 
 </html>
