@@ -1,5 +1,5 @@
 /*
- *  x-tree-select - v1.3.4
+ *  x-tree-select - v1.3.5
  *  Tree select for jquery.
  *  
  *
