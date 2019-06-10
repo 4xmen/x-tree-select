@@ -12,9 +12,7 @@
   ],
   "main": "module/index.js",
   "dependencies": {
-    "global": "^4.3.2",
-    "jquery": ">=1.10.2",
-    "live-server": "^1.2.1"
+    "jquery": ">=1.10.2"
   },
   "description": "Tree select for jquery.",
   "devDependencies": {
@@ -40,5 +38,5 @@
     "type": "git",
     "url": "git+https://github.com/4xmen/x-tree-select.git"
   },
-  "version": "2.0.0"
+  "version": "2.0.1"
 }
