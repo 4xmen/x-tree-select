@@ -118,6 +118,18 @@
 
                     $.xtsStore[$.currentCounter].onOpen();
 
+                    // create search event
+                    $(document).on('keyup', "#xtsel-list .srch", function () {
+                        // console.log();
+                        var c = $(this).closest('.xtsel').data('trcounter');
+                        var q = $(this).val();
+                        if (q.length == 0){
+                            return false;
+                        }
+                        var b = $.xts.searchShow(c, q, $.xtsStore[c].datatree);
+                        $("#xtsel-list .xli").remove();
+                        $("#xtsel-list").append(b);
+                    });
 
                     // find target for last value
                     $.xts.target = $(this).parent().find('input');
@@ -218,7 +230,7 @@
                         }
                         $("#xtsel-list").removeClass($.treeselect_animation[$.xtsStore[$.currentCounter].transition]);
                     }, 600);
-                }else if( $(e.target).hasClass('search') || $(e.target).hasClass('srch') ){
+                } else if ($(e.target).hasClass('search') || $(e.target).hasClass('srch')) {
                     // console.log('x');
                 } else { // choose|select value
                     // onChange event
@@ -311,7 +323,7 @@
                 var back = $.navigatex[$.navigatex.length - 1];
                 content += '<li class="xtsel-back" data-id="' + back.id + '"> &nbsp;' + back.title + '</li>';
             } else {
-                 // if has no parent
+                // if has no parent
                 // search element
                 content += '<li class="search"> <input type="search" class="srch" placeholder="search..." value=""> </li>'
 
@@ -321,13 +333,13 @@
                 var item = list[ix];
                 // ad childs
                 // check has child
-                var clsx = ' class="xtsel-childer"';
+                var clsx = ' class="xli xtsel-childer"';
                 var select = '';
                 if (item[$.xtsStore[$.currentCounter].json.child].length === 0) {
-                    clsx = ' class=""';
+                    clsx = ' class="xli"';
                 } else {
                     if ($.xtsStore[$.currentCounter].selectablePrernt) {
-                        var select = '<span class="xtsel-selectable"></span>';
+                       select = '<span class="xtsel-selectable"></span>';
                     }
                 }
 
@@ -391,7 +403,7 @@
             } else {
                 $.navigatex.push({
                     id: "",
-                    title:  $.xtsStore[c].mainTitle
+                    title: $.xtsStore[c].mainTitle
                 });
                 $.lastx.title = $.xtsStore[c].mainTitle;
                 $.lastx.id = '';
@@ -418,6 +430,34 @@
 
             $.navigatex.pop();
             return false;
+
+        }
+
+
+        this.searchShow = function (c, q, items) {
+            var content = '';
+            var select = '';
+            if ($.xtsStore[c].selectablePrernt) {
+                select = '<span class="xtsel-selectable"></span>';
+            }
+            var clsx = ' class="xli" ';
+            for (const ix in items) {
+                var itm = items[ix];
+                if (itm[$.xtsStore[c].json.title].toString().indexOf(q) !== -1 || itm[$.xtsStore[c].json.value].toString().indexOf(q) !== -1) {
+                    if (itm[$.xtsStore[c].json.child] != undefined && itm[$.xtsStore[c].json.child].length > 0) {
+                        clsx = ' class="xli xtsel-childer" ';
+                        content += '<li' + clsx + ' data-id="' + itm.idx + '"  data-value="' + itm[$.xtsStore[c].json.value] + '">' + select + itm[$.xtsStore[c].json.title] + '</li>';
+                        content += $.xts.searchShow(c,q,itm[$.xtsStore[c].json.child]);
+                    } else {
+                        content += '<li' + clsx + ' data-id="' + itm.idx + '"  data-value="' + itm[$.xtsStore[c].json.value] + '">' + itm[$.xtsStore[c].json.title] + '</li>';
+                    }
+                } else {
+                    if (itm[$.xtsStore[c].json.child] != undefined && itm[$.xtsStore[c].json.child].length > 0) {
+                        content += $.xts.searchShow(c,q,itm[$.xtsStore[c].json.child]);
+                    }
+                }
+            }
+            return content;
 
         }
 
@@ -451,6 +491,7 @@
             };
             // reset docuemnt bind
             $(document).unbind('click.handvarrsl');
+            $(document).off('keyup', "#xtsel-list .srch");
         };
         this.setValue = function (newValue) {
             var currentInnerText = this.html();
