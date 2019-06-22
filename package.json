@@ -8,7 +8,10 @@
     "dist/x-tree-select.min.js",
     "dist/check-box.png",
     "dist/left.png",
-    "dist/right.png"
+    "dist/right.png",
+    "dist/themes/xts-bootstrap-theme.css",
+    "dist/themes/xts-materialize-theme.css",
+    "dist/themes/xts-semantic-ui-theme.css"
   ],
   "main": "module/index.js",
   "dependencies": {
@@ -38,5 +41,5 @@
     "type": "git",
     "url": "git+https://github.com/4xmen/x-tree-select.git"
   },
-  "version": "2.0.1"
+  "version": "2.1.1"
 }

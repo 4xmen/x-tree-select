@@ -1,5 +1,5 @@
 /*
- *  x-tree-select - v2.0.0
+ *  x-tree-select - v2.0.1
  *  Tree select for jquery.
  *  
  *
@@ -45,7 +45,8 @@
                 title: 'title',
                 value: 'value',
                 child: 'child'
-            }
+            },
+            searchable: false,
         }, options);
 
         // store navigation for trace where are we?
@@ -83,14 +84,14 @@
                 placeholder = $(self).attr('placeholder');
             }
 
+            var elCls = '';
             // set rtl class if is rtl
-            var rtlClass = '';
             if ($.xtsStore[$.scbCounter].direction === 'rtl') {
-                rtlClass = 'xts-rtl';
+                elCls = 'xts-rtl';
             }
 
             // init element for click for choose
-            $(self).parent().append('<div class="xtsel ' + rtlClass + '" data-trcounter="' +
+            $(self).parent().append('<div class="xtsel ' + elCls + '" data-trcounter="' +
                 $.scbCounter + '" >' + placeholder + '</div>');
 
 
@@ -119,12 +120,33 @@
                 if (!$(this).hasClass('active')) {
 
                     $.xtsStore[$.currentCounter].onOpen();
+
+                    if ($.xtsStore[$.currentCounter].searchable) {
+                        var listCls = ' class="xts-searcable" ' ;
+                        // create search event
+                        $(document).on('keyup', "#xtsel-list .srch", function () {
+                            // console.log();
+                            var c = $(this).closest('.xtsel').data('trcounter');
+                            var q = $(this).val();
+                            if (q.length == 0) {
+                                $.xts.showTree($.xtsStore[c].datatree);
+                                $("#xtsel-list .srch").focus();
+                                return false;
+                            }
+                            var b = $.xts.searchShow(c, q, $.xtsStore[c].datatree);
+                            $("#xtsel-list .xli").remove();
+                            $("#xtsel-list").append(b);
+                        });
+                    } else {
+                        var listCls = '' ;
+                    }
+
                     // find target for last value
                     $.xts.target = $(this).parent().find('input');
                     // find select text position
                     $.xts.text = $(self).parent().find('.xtsel');
                     //if now list show list and countiniu
-                    $(this).append('<ul id="xtsel-list"></ul>');
+                    $(this).append('<ul'+listCls+' id="xtsel-list"></ul>');
                     if ($.xtsStore[$.currentCounter].navx === undefined) {
                         // show first list main cat in list
                         $.xts.showTree($.xtsStore[$.currentCounter].datatree);
@@ -136,7 +158,7 @@
                     // slide down list
                     $("#xtsel-list").slideDown(function () {
                         $(document).bind('click.handvarrsl', function (e) {
-                            if (!$(e.target).is(".xtsel-childer, .xtsel-back")) {
+                            if (!$(e.target).is(".xtsel-childer, .xtsel-back, .search, .srch")) {
                                 $.xts.resetClose();
                                 $("#xtsel-list").slideUp(200, function () {
                                     $(this).remove();
@@ -218,7 +240,8 @@
                         }
                         $("#xtsel-list").removeClass($.treeselect_animation[$.xtsStore[$.currentCounter].transition]);
                     }, 600);
-
+                } else if ($(e.target).hasClass('search') || $(e.target).hasClass('srch')) {
+                    // console.log('x');
                 } else { // choose|select value
                     // onChange event
                     $.xtsStore[$.currentCounter].onChange({
@@ -296,32 +319,37 @@
         /**
          * show list into selector
          * @param list
-         * @param cb
+         * @param cb callback
          */
         this.showTree = function (list, cb) {
             var content = '';
             // clear li list
             $("#xtsel-list li").remove();
+
             // back button handle
             // has parent need back button
             if ($.navigatex.length !== 0) {
                 // if navigation is empity not need back button
                 var back = $.navigatex[$.navigatex.length - 1];
-
                 content += '<li class="xtsel-back" data-id="' + back.id + '"> &nbsp;' + back.title + '</li>';
+            } else {
+                // if has no parent
+                // search element
+                content += '<li class="search"> <input type="search" class="srch" placeholder="search..." value=""> </li>'
+
             }
             // show list passed to function
             for (var ix in list) {
                 var item = list[ix];
                 // ad childs
                 // check has child
-                var clsx = ' class="xtsel-childer"';
+                var clsx = ' class="xli xtsel-childer"';
                 var select = '';
                 if (item[$.xtsStore[$.currentCounter].json.child].length === 0) {
-                    clsx = ' class=""';
+                    clsx = ' class="xli"';
                 } else {
                     if ($.xtsStore[$.currentCounter].selectablePrernt) {
-                        var select = '<span class="xtsel-selectable"></span>';
+                        select = '<span class="xtsel-selectable"></span>';
                     }
                 }
 
@@ -385,7 +413,7 @@
             } else {
                 $.navigatex.push({
                     id: "",
-                    title:  $.xtsStore[c].mainTitle
+                    title: $.xtsStore[c].mainTitle
                 });
                 $.lastx.title = $.xtsStore[c].mainTitle;
                 $.lastx.id = '';
@@ -408,11 +436,38 @@
                         return back;
                     }
                 }
-                // console.log($.xtsStore[c].json.child);
             }
 
             $.navigatex.pop();
             return false;
+
+        }
+
+
+        this.searchShow = function (c, q, items) {
+            var content = '';
+            var select = '';
+            if ($.xtsStore[c].selectablePrernt) {
+                select = '<span class="xtsel-selectable"></span>';
+            }
+            for (var ix in items) {
+                var clsx = ' class="xli" ';
+                var itm = items[ix];
+                if (itm[$.xtsStore[c].json.title].toString().indexOf(q) !== -1 || itm[$.xtsStore[c].json.value].toString().indexOf(q) !== -1) {
+                    if (itm[$.xtsStore[c].json.child] != undefined && itm[$.xtsStore[c].json.child].length > 0) {
+                        clsx = ' class="xli xtsel-childer" ';
+                        content += '<li' + clsx + ' data-id="' + itm.idx + '"  data-value="' + itm[$.xtsStore[c].json.value] + '">' + select + itm[$.xtsStore[c].json.title] + '</li>';
+                        content += $.xts.searchShow(c, q, itm[$.xtsStore[c].json.child]);
+                    } else {
+                        content += '<li' + clsx + ' data-id="' + itm.idx + '"  data-value="' + itm[$.xtsStore[c].json.value] + '">' + itm[$.xtsStore[c].json.title] + '</li>';
+                    }
+                } else {
+                    if (itm[$.xtsStore[c].json.child] != undefined && itm[$.xtsStore[c].json.child].length > 0) {
+                        content += $.xts.searchShow(c, q, itm[$.xtsStore[c].json.child]);
+                    }
+                }
+            }
+            return content;
 
         }
 
@@ -446,6 +501,7 @@
             };
             // reset docuemnt bind
             $(document).unbind('click.handvarrsl');
+            $(document).off('keyup', "#xtsel-list .srch");
         };
         this.setValue = function (newValue) {
             var currentInnerText = this.html();

@@ -442,7 +442,7 @@
             if ($.xtsStore[c].selectablePrernt) {
                 select = '<span class="xtsel-selectable"></span>';
             }
-            for (const ix in items) {
+            for (var ix in items) {
                 var clsx = ' class="xli" ';
                 var itm = items[ix];
                 if (itm[$.xtsStore[c].json.title].toString().indexOf(q) !== -1 || itm[$.xtsStore[c].json.value].toString().indexOf(q) !== -1) {
