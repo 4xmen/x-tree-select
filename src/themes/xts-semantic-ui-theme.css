@@ -20,7 +20,7 @@
  * @link       https://github.com/4xmen/x-tree-select
  * @link       https://www.npmjs.com/package/x-tree-select
  */
-.trsel{
+.xtsel{
     background-color: #ffffff;
     text-align: left;
     background-repeat: no-repeat;
@@ -37,27 +37,27 @@
     padding-bottom: 8px;
 }
 
-.trsel:hover{
+.xtsel:hover{
     border-color: rgb(150, 200, 218);
 }
-.trs-rtl{
+.xts-rtl{
     text-align: right;
     background-position-x:12px;
     padding-left: 29px;
     padding-right: 14px;
 }
 
-#trsel-list {
+#xtsel-list {
     top:20px;
     border-color: rgb(150, 200, 218);
 }
 
-#trsel-list li{
+#xtsel-list li{
     background-color: #fff!important;
     border-bottom-color: #fafafa;
     padding: .48571429rem 1.14285714rem!important;
 }
 
-#trsel-list li:hover{
+#xtsel-list li:hover{
     background-color: rgba(0,0,0,.05) !important;
 }

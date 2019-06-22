@@ -20,7 +20,7 @@
  * @link       https://github.com/4xmen/x-tree-select
  * @link       https://www.npmjs.com/package/x-tree-select
  */
-.trsel{
+.xtsel{
     border-radius: 0;
     background: white;
     border: 0;
@@ -38,15 +38,15 @@
     background-size: 20px 20px;
     background-image: url('data:image/svg+xml;charset=utf8,<svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>');
 }
-.trsel:hover{
+.xtsel:hover{
     border-bottom: 1px solid #26a69a ;
 }
-.trs-rtl{
+.xts-rtl{
     background-position-x: 12px;
     text-align: right;
 }
 
-#trsel-list {
+#xtsel-list {
     background: white;
     border: 0;
     border-radius: 0;
@@ -55,13 +55,13 @@
     top: 25px;
 }
 
-#trsel-list li{
+#xtsel-list li{
     background: white;
     padding: 0 10px;
     line-height: 40px !important;
     max-height: none;
 }
 
-#trsel-list li:hover{
+#xtsel-list li:hover{
     background-color:  rgba(38, 166, 154, 0.4);
 }

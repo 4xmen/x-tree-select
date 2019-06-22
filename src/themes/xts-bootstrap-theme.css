@@ -20,7 +20,7 @@
  * @link       https://github.com/4xmen/x-tree-select
  * @link       https://www.npmjs.com/package/x-tree-select
  */
-.trsel{
+.xtsel{
     background: white;
     background-repeat: no-repeat;
     background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
@@ -41,11 +41,11 @@
     text-align: left;
 }
 
-.trs-rtl{
+.xts-rtl{
     text-align: right;
     background-position-x:12px;
 }
 
-#trsel-list{
+#xtsel-list{
     top: 1.25rem;
 }

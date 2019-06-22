@@ -1,4 +1,4 @@
-.trsel{
+.xtsel{
     border: 1px solid silver;
     padding: 5px;
     text-align: center;
@@ -7,7 +7,7 @@
     position: relative;
 }
 
-#trsel-list{
+#xtsel-list{
     border: gray 1px solid;
     width: 100%;
     padding: 0;
@@ -22,7 +22,7 @@
     z-index: 99;
 }
 
-#trsel-list li{
+#xtsel-list li{
     padding: 4px;
     border-bottom: 1px solid rgba(33,33,33,0.2);
     display: block;
@@ -31,15 +31,15 @@
     overflow: hidden;
 }
 
-#trsel-list li:nth-child(even){
+#xtsel-list li:nth-child(even){
     background: #efefef;
 }
 
-#trsel-list li:last-child{
+#xtsel-list li:last-child{
     border: none;
 }
 
-#trsel-list li.trsel-childer{
+#xtsel-list li.xtsel-childer{
     background: transparent url("right.png") no-repeat;
     background-position-x: calc(100% - 10px) ;
     -ms-background-position-y: center;
@@ -47,27 +47,27 @@
     background-size: auto 50% ;
 }
 
-#trsel-list li:hover{
+#xtsel-list li:hover{
     background-color: #dbedff ;
 }
-#trsel-list li.trsel-back{
+#xtsel-list li.xtsel-back{
     background: white url("left.png") 5px no-repeat;
     padding-left: 30px;
     background-size: auto 50% ;
 }
 
 
-#trsel-list.xout{
+#xtsel-list.xout{
     transform-origin: center right;
     transform-style: preserve-3d;
     transform: translateX(-100%) rotateY(-180deg) skew(0deg) ;
 }
 
-#trsel-list.xfade li{
+#xtsel-list.xfade li{
     opacity: 0;
 }
 
-#trsel-list li{
+#xtsel-list li{
     -webkit-transition: all .55s linear;
     -moz-transition: all .55s linear;
     -o-transition: all .55s linear;
@@ -75,7 +75,7 @@
     max-height: 30px;
 }
 
-#trsel-list.xslide li{
+#xtsel-list.xslide li{
     max-height: 0;
     overflow: hidden;
     box-sizing: border-box;
@@ -88,7 +88,7 @@
     transition: all .6s linear;
 }
 
-.trsel-selectable{
+.xtsel-selectable{
     float: left;
     width: 1.5em;
     position: relative;
@@ -101,38 +101,38 @@
 
 
 /** rtl support css */
-.trs-rtl{
+.xts-rtl{
 }
 
-.trs-rtl li {
+.xts-rtl li {
     direction: rtl !important;
     text-align: right !important;
 }
-.trs-rtl li.trsel-childer {
+.xts-rtl li.xtsel-childer {
     background-image: url("left.png") !important;
     background-position-x: 10px !important;
 }
-.trs-rtl li.trsel-back {
+.xts-rtl li.xtsel-back {
     background-image:  url("right.png") !important ;
     background-position-x: calc(100% - 10px) !important;
     padding-right: 30px !important;
 }
 
 
-.trs-rtl .trsel-selectable{
+.xts-rtl .xtsel-selectable{
     float: right;
     margin-left: .7em;
     margin-right: 0;
 }
 
-.trsel .search{
+.xtsel .search{
     display: none;
     padding: 0 !important;
 }
-.trsel.trs-searcable .search{
+.xtsel.xts-searcable .search{
     display: block;
 }
-.trsel .search input{
+.xtsel .search input{
     background: white;
     padding: 8px;
     border: 0;
