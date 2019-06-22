@@ -82,11 +82,6 @@
                 elCls = 'xts-rtl';
             }
 
-            // check is searchable
-            if ($.xtsStore[$.scbCounter].searchable === true) {
-                elCls += ' xts-searcable';
-            }
-
             // init element for click for choose
             $(self).parent().append('<div class="xtsel ' + elCls + '" data-trcounter="' +
                 $.scbCounter + '" >' + placeholder + '</div>');
@@ -118,25 +113,32 @@
 
                     $.xtsStore[$.currentCounter].onOpen();
 
-                    // create search event
-                    $(document).on('keyup', "#xtsel-list .srch", function () {
-                        // console.log();
-                        var c = $(this).closest('.xtsel').data('trcounter');
-                        var q = $(this).val();
-                        if (q.length == 0){
-                            return false;
-                        }
-                        var b = $.xts.searchShow(c, q, $.xtsStore[c].datatree);
-                        $("#xtsel-list .xli").remove();
-                        $("#xtsel-list").append(b);
-                    });
+                    if ($.xtsStore[$.currentCounter].searchable) {
+                        var listCls = ' class="xts-searcable" ' ;
+                        // create search event
+                        $(document).on('keyup', "#xtsel-list .srch", function () {
+                            // console.log();
+                            var c = $(this).closest('.xtsel').data('trcounter');
+                            var q = $(this).val();
+                            if (q.length == 0) {
+                                $.xts.showTree($.xtsStore[c].datatree);
+                                $("#xtsel-list .srch").focus();
+                                return false;
+                            }
+                            var b = $.xts.searchShow(c, q, $.xtsStore[c].datatree);
+                            $("#xtsel-list .xli").remove();
+                            $("#xtsel-list").append(b);
+                        });
+                    } else {
+                        var listCls = '' ;
+                    }
 
                     // find target for last value
                     $.xts.target = $(this).parent().find('input');
                     // find select text position
                     $.xts.text = $(self).parent().find('.xtsel');
                     //if now list show list and countiniu
-                    $(this).append('<ul id="xtsel-list"></ul>');
+                    $(this).append('<ul'+listCls+' id="xtsel-list"></ul>');
                     if ($.xtsStore[$.currentCounter].navx === undefined) {
                         // show first list main cat in list
                         $.xts.showTree($.xtsStore[$.currentCounter].datatree);
@@ -309,7 +311,7 @@
         /**
          * show list into selector
          * @param list
-         * @param cb
+         * @param cb callback
          */
         this.showTree = function (list, cb) {
             var content = '';
@@ -339,7 +341,7 @@
                     clsx = ' class="xli"';
                 } else {
                     if ($.xtsStore[$.currentCounter].selectablePrernt) {
-                       select = '<span class="xtsel-selectable"></span>';
+                        select = '<span class="xtsel-selectable"></span>';
                     }
                 }
 
@@ -440,20 +442,20 @@
             if ($.xtsStore[c].selectablePrernt) {
                 select = '<span class="xtsel-selectable"></span>';
             }
-            var clsx = ' class="xli" ';
             for (const ix in items) {
+                var clsx = ' class="xli" ';
                 var itm = items[ix];
                 if (itm[$.xtsStore[c].json.title].toString().indexOf(q) !== -1 || itm[$.xtsStore[c].json.value].toString().indexOf(q) !== -1) {
                     if (itm[$.xtsStore[c].json.child] != undefined && itm[$.xtsStore[c].json.child].length > 0) {
                         clsx = ' class="xli xtsel-childer" ';
                         content += '<li' + clsx + ' data-id="' + itm.idx + '"  data-value="' + itm[$.xtsStore[c].json.value] + '">' + select + itm[$.xtsStore[c].json.title] + '</li>';
-                        content += $.xts.searchShow(c,q,itm[$.xtsStore[c].json.child]);
+                        content += $.xts.searchShow(c, q, itm[$.xtsStore[c].json.child]);
                     } else {
                         content += '<li' + clsx + ' data-id="' + itm.idx + '"  data-value="' + itm[$.xtsStore[c].json.value] + '">' + itm[$.xtsStore[c].json.title] + '</li>';
                     }
                 } else {
                     if (itm[$.xtsStore[c].json.child] != undefined && itm[$.xtsStore[c].json.child].length > 0) {
-                        content += $.xts.searchShow(c,q,itm[$.xtsStore[c].json.child]);
+                        content += $.xts.searchShow(c, q, itm[$.xtsStore[c].json.child]);
                     }
                 }
             }

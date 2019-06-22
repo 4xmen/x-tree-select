@@ -126,11 +126,11 @@
 }
 
 .xtsel .search{
-    display: none;
+    display: none !important;
     padding: 0 !important;
 }
-.xtsel.xts-searcable .search{
-    display: block;
+.xts-searcable .search{
+    display: block !important;
 }
 .xtsel .search input{
     background: white;
