@@ -81,6 +81,7 @@ $(function () {
     $("#demo4").treeSelect({
         datatree: defJson,
         transition: 'none',
+        searchable: true,
         onOpen: function () {
             console.log('onOpen event triggered');
         }, onClose: function () {

@@ -37,7 +37,8 @@
                 title: 'title',
                 value: 'value',
                 child: 'child'
-            }
+            },
+            searchable: false,
         }, options);
 
         // store navigation for trace where are we?
@@ -75,14 +76,19 @@
                 placeholder = $(self).attr('placeholder');
             }
 
+            var elCls = '';
             // set rtl class if is rtl
-            var rtlClass = '';
             if ($.trsStore[$.scbCounter].direction === 'rtl') {
-                rtlClass = 'trs-rtl';
+                elCls = 'trs-rtl';
+            }
+
+            // check is searchable
+            if ($.trsStore[$.scbCounter].searchable === true) {
+                elCls += ' trs-searcable';
             }
 
             // init element for click for choose
-            $(self).parent().append('<div class="trsel ' + rtlClass + '" data-trcounter="' +
+            $(self).parent().append('<div class="trsel ' + elCls + '" data-trcounter="' +
                 $.scbCounter + '" >' + placeholder + '</div>');
 
 
@@ -128,7 +134,7 @@
                     // slide down list
                     $("#trsel-list").slideDown(function () {
                         $(document).bind('click.handvarrsl', function (e) {
-                            if (!$(e.target).is(".trsel-childer, .trsel-back")) {
+                            if (!$(e.target).is(".trsel-childer, .trsel-back, .search, .srch")) {
                                 $.trs.resetClose();
                                 $("#trsel-list").slideUp(200, function () {
                                     $(this).remove();
@@ -210,7 +216,8 @@
                         }
                         $("#trsel-list").removeClass($.treeselect_animation[$.trsStore[$.currentCounter].transition]);
                     }, 600);
-
+                }else if( $(e.target).hasClass('search') || $(e.target).hasClass('srch') ){
+                    // console.log('x');
                 } else { // choose|select value
                     // onChange event
                     $.trsStore[$.currentCounter].onChange({
@@ -294,13 +301,18 @@
             var content = '';
             // clear li list
             $("#trsel-list li").remove();
+
             // back button handle
             // has parent need back button
             if ($.navigatex.length !== 0) {
                 // if navigation is empity not need back button
                 var back = $.navigatex[$.navigatex.length - 1];
-
                 content += '<li class="trsel-back" data-id="' + back.id + '"> &nbsp;' + back.title + '</li>';
+            } else {
+                 // if has no parent
+                // search element
+                content += '<li class="search"> <input type="search" class="srch" placeholder="search..." value=""> </li>'
+
             }
             // show list passed to function
             for (var ix in list) {
@@ -400,7 +412,6 @@
                         return back;
                     }
                 }
-                // console.log($.trsStore[c].json.child);
             }
 
             $.navigatex.pop();
