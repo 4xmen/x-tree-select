@@ -32,7 +32,9 @@
     "jquery",
     "x-tree-select",
     "tree-select",
-    "select"
+    "select",
+	"tree combobox",
+	"combobox wizard"
   ],
   "license": "GPL-3.0",
   "name": "x-tree-select",
@@ -41,5 +43,5 @@
     "type": "git",
     "url": "git+https://github.com/4xmen/x-tree-select.git"
   },
-  "version": "2.1.1"
+  "version": "2.1.2"
 }
