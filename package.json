@@ -3,16 +3,6 @@
     "name": "4xmen",
     "url": "http://4xmen.ir"
   },
-  "files": [
-    "dist/x-tree-select.min.css",
-    "dist/x-tree-select.min.js",
-    "dist/check-box.png",
-    "dist/left.png",
-    "dist/right.png",
-    "dist/themes/xts-bootstrap-theme.css",
-    "dist/themes/xts-materialize-theme.css",
-    "dist/themes/xts-semantic-ui-theme.css"
-  ],
   "main": "module/index.js",
   "dependencies": {
     "jquery": ">=1.10.2"
@@ -43,5 +33,5 @@
     "type": "git",
     "url": "git+https://github.com/4xmen/x-tree-select.git"
   },
-  "version": "2.1.2"
+  "version": "2.1.3"
 }
