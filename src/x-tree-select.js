@@ -25,9 +25,9 @@
             direction: 'ltr',
             onOpen: function () {
             },
-            OnSelect: function (selected) {
+            onSelect: function (selected) {
             },
-            OnChange: function (oldVal, newVal) {
+            onChange: function (oldVal, newVal) {
             },
             onClose: function () {
             },
@@ -56,8 +56,6 @@
         // store setting for use
         $.scbCounter++;
         $.trsStore[$.scbCounter] = settings;
-
-        // console.log($.trsStore);
 
         /**
          * initial element
@@ -91,10 +89,11 @@
                 if (e.target !== this) {
                     return;
                 }
-                
+
                 var trsel = $(this);
 
-                if (trsel.hasClass("loading")) {
+                if (trsel.hasClass("loading")) 
+                {
                     return;
                 }
 
@@ -134,6 +133,7 @@
                             e.preventDefault();
                             return false;
                         });
+
                     });
                     // add active class for check  is open
                     $(this).addClass('active');
@@ -158,6 +158,12 @@
             $(document).on('click', '#trsel-list li', function (e) {
                 // has child & no parent selecatble
                 if ($(this).hasClass('trsel-childer') && !$(e.target).hasClass('trsel-selectable')) {
+
+                    // Prevent pushing "tmp" to the navigatex if clicked repeatedly while in transition
+                    if ($("#trsel-list").hasClass($.treeselect_animation[$.trsStore[$.currentCounter].transition])) {
+                        return;
+                    }
+
                     // make navigation
                     var tmp = {
                         title: $.lastx.title,
@@ -181,6 +187,13 @@
                     }, 600);
 
                 } else if ($(this).hasClass('trsel-back')) { // if click on back
+
+                    // Prevent issue when repeatedly clicking back
+                    if ($("#trsel-list").hasClass($.treeselect_animation[$.trsStore[$.currentCounter].transition]))
+                    {
+                        return;
+                    }
+
                     if ($.navigatex[$.navigatex.length - 1] !== undefined) {
                         // roll back navigtaion to last
                         $.lastx.title = $.navigatex[$.navigatex.length - 1].title;
@@ -209,7 +222,7 @@
 
                 } else { // choose|select value
                     // OnChange event
-                    $.trsStore[$.currentCounter].OnChange({
+                    $.trsStore[$.currentCounter].onChange({
                         value: $($.trs.target).val(),
                         text: $($.trs.text).clone()    //clone the element
                             .children() //select all the children
@@ -235,7 +248,7 @@
                     // remove active class and hide list
                     $($.trs.text).removeClass('active');
                     // OnChange
-                    $.trsStore[$.currentCounter].OnSelect({
+                    $.trsStore[$.currentCounter].onSelect({
                         value: $(this).data('value'),
                         text: $(this).text(),
                         id: $(this).data('id'),
