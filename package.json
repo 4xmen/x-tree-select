@@ -3,13 +3,6 @@
     "name": "4xmen",
     "url": "http://4xmen.ir"
   },
-  "files": [
-    "dist/x-tree-select.min.css",
-    "dist/x-tree-select.min.js",
-    "dist/check-box.png",
-    "dist/left.png",
-    "dist/right.png"
-  ],
   "main": "module/index.js",
   "dependencies": {
     "jquery": ">=1.10.2"
@@ -29,7 +22,9 @@
     "jquery",
     "x-tree-select",
     "tree-select",
-    "select"
+    "select",
+	"tree combobox",
+	"combobox wizard"
   ],
   "license": "GPL-3.0",
   "name": "x-tree-select",
@@ -38,5 +33,5 @@
     "type": "git",
     "url": "git+https://github.com/4xmen/x-tree-select.git"
   },
-  "version": "1.3.2"
+  "version": "2.1.3"
 }

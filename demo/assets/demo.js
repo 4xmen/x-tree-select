@@ -1,7 +1,7 @@
 var defJson = [
     {
     title: 'text1',
-    value: 1,
+    value: 'x1',
     child: []
 }, {
     title: 'text2',
@@ -22,7 +22,7 @@ var defJson = [
                 child: [
                     {
                         title: 'lv3 text3',
-                        value: 3,
+                        value: 'x99',
                         child: []
                     },
                     {
@@ -81,6 +81,7 @@ $(function () {
     $("#demo4").treeSelect({
         datatree: defJson,
         transition: 'none',
+        searchable: true,
         onOpen: function () {
             console.log('onOpen event triggered');
         }, onClose: function () {

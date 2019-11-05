@@ -118,6 +118,7 @@ The tree select options you can customize your plugine usagae
 | Option | Default | Description |
 | ------ | ------ | ------ | 
 | `direction`| ltr | you can use rtl too for your project|
+| `searchable`| false | searchable element |
 | `datatree`| []| The data need navigate in tree select watch abow example to how bind this value|
 |`mainTitle`| "Main category"| The title of back button to main category list |
 |`transition`| "fade"| The change page animation transition effect |

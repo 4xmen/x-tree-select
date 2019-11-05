@@ -1,0 +1,51 @@
+/**
+ * Tree select plugin for jquery
+ *
+ * Copyright (C) 2017 4xmen team <a1gard@4xmen.ir>
+ *
+ * LICENSE: This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the Free
+ * Software Foundation; either version 3 of the License, or (at your option) any
+ * later version.  This program is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ * Public License for more details.  You should have received a copy of the GNU
+ * General Public License along with this program.
+ * If not, see <http://opensource.org/licenses/gpl-license.php>.
+ *
+ * @package    x-tree-select
+ * @subpackage x-tree-select theme
+ * @author     4xmen team  <www.4xmen.ir>
+ * @author     A1Gard <a1gard@4xmen.ir>
+ * @link       https://github.com/4xmen/x-tree-select
+ * @link       https://www.npmjs.com/package/x-tree-select
+ */
+.xtsel{
+    background: white;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+    background-origin:padding-box;
+    background-position-x:98%;
+    background-position-y: 50%;
+    background-size: 8px 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: calc(2.25rem + 2px);
+    padding: .375rem 1.75rem .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    vertical-align: middle;
+    text-align: justify;
+    text-align: left;
+}
+
+.xts-rtl{
+    text-align: right;
+    background-position-x:12px;
+}
+
+#xtsel-list{
+    top: 1.25rem;
+}

@@ -32,7 +32,7 @@ coverage
 bower_components
 
 # node-waf configuration
-.lock-trslript
+.lock-xtslript
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
