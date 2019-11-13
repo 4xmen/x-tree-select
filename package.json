@@ -23,8 +23,8 @@
     "x-tree-select",
     "tree-select",
     "select",
-	"tree combobox",
-	"combobox wizard"
+    "tree combobox",
+    "combobox wizard"
   ],
   "license": "GPL-3.0",
   "name": "x-tree-select",
@@ -33,5 +33,5 @@
     "type": "git",
     "url": "git+https://github.com/4xmen/x-tree-select.git"
   },
-  "version": "2.1.4"
+  "version": "2.1.5"
 }
