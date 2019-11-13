@@ -58,8 +58,6 @@
         $.scbCounter++;
         $.xtsStore[$.scbCounter] = settings;
 
-        // console.log($.xtsStore);
-
         /**
          * initial element
          * @param self
@@ -160,6 +158,7 @@
                             e.preventDefault();
                             return false;
                         });
+
                     });
                     // add active class for check  is open
                     $(this).addClass('active');
@@ -184,6 +183,12 @@
             $(document).on('click', '#xtsel-list li', function (e) {
                 // has child & no parent selecatble
                 if ($(this).hasClass('xtsel-childer') && !$(e.target).hasClass('xtsel-selectable')) {
+          
+                    // Prevent pushing "tmp" to the navigatex if clicked repeatedly while in transition which messes up the history
+                    if ($("#xtsel-list").addClass($.treeselect_animation[$.xtsStore[$.currentCounter].transition])) {
+                        return;
+                    }
+                  
                     // make navigation
                     var tmp = {
                         title: $.lastx.title,
@@ -207,6 +212,12 @@
                     }, 600);
 
                 } else if ($(this).hasClass('xtsel-back')) { // if click on back
+                  
+                    // Prevent issue when repeatedly clicking back
+                    if ($("#xtsel-list").addClass($.treeselect_animation[$.xtsStore[$.currentCounter].transition])) {
+                        return;
+                    }
+                  
                     if ($.navigatex[$.navigatex.length - 1] !== undefined) {
                         // roll back navigtaion to last
                         $.lastx.title = $.navigatex[$.navigatex.length - 1].title;
@@ -235,6 +246,7 @@
                 } else if ($(e.target).hasClass('search') || $(e.target).hasClass('srch')) {
                     // console.log('x');
                 } else { // choose|select value
+
                     // onChange event
                     $.xtsStore[$.currentCounter].onChange({
                         value: $($.xts.target).val(),
